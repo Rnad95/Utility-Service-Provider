@@ -98,3 +98,12 @@ Part 2
 ![DM1](https://i.ibb.co/NNb43cB/Whats-App-Image-2022-04-10-at-3-58-39-AM.jpg)
 
 ![DM2](https://i.ibb.co/pyK2jvm/Whats-App-Image-2022-04-10-at-3-58-39-AM-1.jpg)
+
+### Database Schema Diagram 
+
+![schema](https://i.ibb.co/Lhtjqf0/Whats-App-Image-2022-04-10-at-5-47-32-AM.jpg)
+
+
+### System Context Diagram 
+
+![System context diagram](https://i.ibb.co/hZYCFrV/Whats-App-Image-2022-04-10-at-5-52-29-AM.jpg)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form action="/login-process" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Login</button>
+    </form>
+
+    <!--        go sign up page         -->
+    <form action="/signup" method="GET">
+        <h1>Don't have an account? Signup! </h1>
+        <button type="submit">Signup</button>
+    </form>
+
+    <!--        go back home         -->
+    <form action="/" method="GET">
+        <button type="submit">Home</button>
+    </form>
+</body>
+</html>

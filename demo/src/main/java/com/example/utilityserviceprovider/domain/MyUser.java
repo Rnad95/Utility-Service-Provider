@@ -2,15 +2,16 @@ package com.example.utilityserviceprovider.domain;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
 @Setter
 @Entity
-
 public class MyUser implements UserDetails {
 
     @Setter(value= AccessLevel.NONE)
@@ -29,6 +30,9 @@ public class MyUser implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
+    @OneToOne
+    @JoinColumn(name = "role_id" , referencedColumnName = "id")
+    private Role role;
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;
@@ -46,7 +50,9 @@ public class MyUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        ArrayList<SimpleGrantedAuthority> authority = new ArrayList<>();
+        authority.add(new SimpleGrantedAuthority(role.getName()));
+        return authority;
     }
 
     @Override
@@ -68,4 +74,5 @@ public class MyUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

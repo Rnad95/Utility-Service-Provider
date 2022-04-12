@@ -70,9 +70,26 @@ public class MyUser implements UserDetails {
         return true;
     }
 
+
     @Override
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "MyUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
 
 }

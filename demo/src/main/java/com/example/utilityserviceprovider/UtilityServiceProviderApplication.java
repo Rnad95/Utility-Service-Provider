@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class UtilityServiceProviderApplication {
     private static final Logger log = LoggerFactory.getLogger(UtilityServiceProviderApplication.class);
-
     public static void main(String[] args) {
         SpringApplication.run(UtilityServiceProviderApplication.class, args);
     }
@@ -28,4 +27,5 @@ public class UtilityServiceProviderApplication {
 //            log.info("Preloading " + repository.save(new Role("SERVICEPROVIDER")));
 //        };
 //    }
+
 }

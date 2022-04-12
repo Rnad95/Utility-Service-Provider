@@ -8,7 +8,6 @@ public class GeneralController {
 
     @GetMapping("/")
     public String getHomePage(){
-
         return "index.html";
     }
 

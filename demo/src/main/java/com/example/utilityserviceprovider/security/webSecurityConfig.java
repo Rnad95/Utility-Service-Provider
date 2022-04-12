@@ -31,7 +31,7 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/" ,"/signup" , "/login","/service-signup" ).permitAll()
+                .antMatchers("/" ,"/costumer-signup" , "/login" ,"/css/**" , "/js/**" , "/assets/**").permitAll()
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 .antMatchers("/profile").hasAuthority("CUSTOMER")
                 .antMatchers("/service-profile").hasAuthority("SERVICEPROVIDER")
@@ -49,6 +49,4 @@ public class webSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID");
     }
-
-
 }

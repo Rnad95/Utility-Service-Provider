@@ -40,17 +40,18 @@ public class AuthController {
         return "admin";
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/costumer-signup")
     public String getSignupPage(){
         return "signup";
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/costumer-signup")
     public String postSignupUser(@ModelAttribute MyUser myUser){
+
         Role role = roleRepo.findRoleByName("CUSTOMER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
-
+        System.out.println(myUser);
         myUserRepo.save(myUser);
         return "login.html";
     }

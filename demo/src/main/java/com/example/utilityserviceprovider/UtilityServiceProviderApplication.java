@@ -18,14 +18,14 @@ public class UtilityServiceProviderApplication {
         SpringApplication.run(UtilityServiceProviderApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner initDatabase(RoleRepo repository) {
-
-
-        return args -> {
-            log.info("Preloading " + repository.save(new Role("ADMIN")));
-            log.info("Preloading " + repository.save(new Role("CUSTOMER")));
-            log.info("Preloading " + repository.save(new Role("SERVICEPROVIDER")));
-        };
-    }
+//    @Bean
+//    CommandLineRunner initDatabase(RoleRepo repository) {
+//
+//
+//        return args -> {
+//            log.info("Preloading " + repository.save(new Role("ADMIN")));
+//            log.info("Preloading " + repository.save(new Role("CUSTOMER")));
+//            log.info("Preloading " + repository.save(new Role("SERVICEPROVIDER")));
+//        };
+//    }
 }

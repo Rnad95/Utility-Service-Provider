@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!--        if you are not logged in you will have buttons to go to sign up or login  -->
+    <div sec:authorize="isAnonymous()">
+        <h1>Welcome to the home page</h1>
+        <form action="/signup" method="GET">
+            <h1>Don't have an account? Signup! </h1>
+            <button type="submit">Signup</button>
+        </form>
+
+        <form action="/login" method="GET">
+            <h1>Already registered? Login  </h1>
+            <button type="submit">Login </button>
+        </form>
+
+    </div>
+
+<!--                if you are logged in you will have the logout button -->
+    <div sec:authorize="isAuthenticated()">
+        <h1> you are in !</h1>
+
+
+        <form action="/logout-process" method="GET">
+            <button type="submit">Sign out</button>
+        </form>
+    </div>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

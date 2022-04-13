@@ -28,10 +28,13 @@
     <input type="text" name="email" id="email">
     <br>
     <label for="category">Choose a category:</label>
-        <select name="category" id="category">
-            <option value="gas">Gas</option>
-            <option value="water">Water</option>
-        </select>
+    <select class="form-control" id="category" name="category">
+        <option>All</option>
+        <div th:each="category : ${categories}">
+            <option class="optionGroup"  th:text="${category.title}" th:value="${category.id}"></option>
+            <option  class="optionChild" th:each="subCategory : ${category.children}"  th:text="'--' + ${subCategory.title}" th:value="${subCategory.id}"></option>
+        </div>
+    </select>
     <br>
     <label for="imageURL">Profile Picture</label>
     <input type="text" name="imageURL" id="imageURL">

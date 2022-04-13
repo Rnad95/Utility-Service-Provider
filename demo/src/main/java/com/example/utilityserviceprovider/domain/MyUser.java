@@ -18,7 +18,7 @@ public class MyUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private int id ;
+    private Long id ;
 
     @Column(unique = true)
     private  String username;
@@ -29,6 +29,11 @@ public class MyUser implements UserDetails {
     private  String password;
     private  String phoneNumber;
     private  String email;
+
+
+    @ManyToOne
+    @JoinColumn(name = "category_id" , referencedColumnName = "id")
+    private Category category;
 
     @OneToOne
     @JoinColumn(name = "role_id" , referencedColumnName = "id")

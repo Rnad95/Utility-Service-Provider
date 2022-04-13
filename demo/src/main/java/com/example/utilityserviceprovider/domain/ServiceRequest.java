@@ -15,7 +15,7 @@ public class ServiceRequest {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @CreationTimestamp
     private Date date;
     private boolean doneRequest;

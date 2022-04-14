@@ -8,11 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
-public class MyUser implements UserDetails {
+public class MyUser<set> implements UserDetails {
 
     @Setter(value= AccessLevel.NONE)
     @Id
@@ -30,12 +31,15 @@ public class MyUser implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
-
+// look for two ways relations
+    //relationship with category
     @ManyToOne
     @JoinColumn(name = "category_id" , referencedColumnName = "id")
     private Category category;
 
-    @OneToOne
+
+    //relationship with role
+    @ManyToOne
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
@@ -47,7 +51,6 @@ public class MyUser implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
-
     }
 
     public MyUser() {

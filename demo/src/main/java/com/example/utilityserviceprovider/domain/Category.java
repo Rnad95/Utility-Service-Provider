@@ -32,7 +32,7 @@ public class Category {
     @OneToMany (mappedBy = "category")
     List<MyUser> usersList;
 
-
+    //category and sub category
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private Category parent;

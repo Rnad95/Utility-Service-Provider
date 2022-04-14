@@ -76,7 +76,7 @@ public class AuthController {
         return "service-signup";
     }
     @PostMapping("/service-signup")
-    public String postSignupProvider(@ModelAttribute MyUser myUser , @RequestParam String category ){
+    public String postSignupProvider(@ModelAttribute MyUser myUser ){
         Role role = roleRepo.findRoleByName("SERVICEPROVIDER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);

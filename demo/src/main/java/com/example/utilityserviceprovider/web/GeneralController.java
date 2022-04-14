@@ -17,21 +17,8 @@ public class GeneralController {
 
     @GetMapping("/")
     public String getHomePage(){
-        Category categorya = new Category("a");
-        Category categoryb = new Category("b");
-        Category categorym = categoryRepo.findCategoriesByTitle("Maintenance");
-        categorya.setParent(categorym);
-        categoryb.setParent(categorya);
-        List<Category> list1 = new ArrayList<>();
-        list1.add(categoryb);
-        categorya.setChildren(list1);
-        List<Category> list = new ArrayList<>();
-        list.add(categorya);
-        categorym.setChildren(list);
-        categoryRepo.save(categorym);
-        categoryRepo.save(categorya);
-        categoryRepo.save(categoryb);
         return "index.html";
     }
+
 
 }

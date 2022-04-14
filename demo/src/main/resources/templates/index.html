@@ -11,7 +11,7 @@
 <!--        if you are not logged in you will have buttons to go to sign up or login  -->
     <div sec:authorize="isAnonymous()">
         <h1>Welcome to the home page</h1>
-        <form action="/costumer-signup" method="GET">
+        <form action="/customer-signup" method="GET">
             <h1>Don't have an account? Signup! </h1>
             <button type="submit">Signup</button>
         </form>
@@ -82,7 +82,7 @@
                                                     </div>
                                                     <div class="text-center mx-2">
                                                         Don't have an account?
-                                                        <a href="/costumer-signup">Signup!!</a>
+                                                        <a href="/customer-signup">Signup!!</a>
                                                     </div>
                                                 </form>
                                             </div>

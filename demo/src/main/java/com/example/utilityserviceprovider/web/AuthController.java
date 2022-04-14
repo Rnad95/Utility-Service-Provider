@@ -47,15 +47,19 @@ public class AuthController {
 
 
 
-    @GetMapping("/costumer-signup")
+    @GetMapping("/customer-signup")
     public String getSignupPage(){
 
         return "customer-signup";
     }
 
-
-    @PostMapping("/costumer-signup")
+    @PostMapping("/customer-signup")
     public String postSignupUser(@ModelAttribute MyUser myUser){
+        if(myUserRepo.findByUsername(myUser.getUsername())!=null)
+        {
+            return "customer-signup.html";
+            //we should raise an error
+        }
         Role role = roleRepo.findRoleByName("CUSTOMER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
@@ -68,6 +72,7 @@ public class AuthController {
     public String getService(){
     return "service-profile";
 }
+
     @GetMapping("/service-signup")
     public String getProviderSignupPage(Model model){
         List<Category> categories = categoryRepo.findAll();
@@ -77,6 +82,11 @@ public class AuthController {
     }
     @PostMapping("/service-signup")
     public String postSignupProvider(@ModelAttribute MyUser myUser ){
+        if(myUserRepo.findByUsername(myUser.getUsername())!=null)
+        {
+            return "service-signup.html";
+            //we should raise an error
+        }
         Role role = roleRepo.findRoleByName("SERVICEPROVIDER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);

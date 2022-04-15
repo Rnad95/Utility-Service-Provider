@@ -1,6 +1,6 @@
-package com.example.utilityserviceprovider.repositories;
+package com.example.utilityserviceprovider.infrastructure;
 
-import com.example.utilityserviceprovider.models.Review;
+import com.example.utilityserviceprovider.domain.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

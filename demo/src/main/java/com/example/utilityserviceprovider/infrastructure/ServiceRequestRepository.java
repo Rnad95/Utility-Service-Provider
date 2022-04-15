@@ -1,6 +1,6 @@
-package com.example.utilityserviceprovider.repositories;
+package com.example.utilityserviceprovider.infrastructure;
 
-import com.example.utilityserviceprovider.models.ServiceRequest;
+import com.example.utilityserviceprovider.domain.ServiceRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,13 +1,14 @@
 package com.example.utilityserviceprovider.domain;
 
+
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
-
+@Setter
+@Getter
 @Entity
 public class ServiceRequest {
     /**
@@ -15,30 +16,30 @@ public class ServiceRequest {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @CreationTimestamp
     private Date date;
     private boolean doneRequest;
-    /**
-     * @Create two Constructors: default Constructor and Constructor passing content and stars
-     *
-     */
-    public ServiceRequest() {
-    }
-    public ServiceRequest(Date date, boolean doneRequest) {
-        this.date = date;
-        this.doneRequest = doneRequest;
-    }
+    private boolean accepted;
 
     /**
      *
-     * @Getter and
+     * @Create two Constructors: default Constructor and Constructor passing content and stars
+     *
      */
-    public Date getDate() {
-        return date;
+
+    public ServiceRequest() {
     }
+
+    public ServiceRequest(Date date, boolean doneRequest,boolean accepted) {
+        this.date = date;
+        this.doneRequest = false; //not done when created
+        this.accepted=false;    // not accepted when created
+    }
+
     public boolean isDoneRequest() {
         return doneRequest;
     }
+
 
 }

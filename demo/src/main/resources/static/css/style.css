@@ -11,15 +11,198 @@ body{
     padding: 0;
     margin: 0;
 }
+a{
+    text-decoration: none;
+}
 
 
+/* ====== > Header < ======== */
 
+header{
+    background: #fff;
+    height: 70px;
+    -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
+.navbar-brand{
+    color: var(--bs-third) !important;
+}
+.nav-link-login{
+    background: var(--bs-third);
+    padding: 6px 18px;
+    color: #fff;
+    transition: 0.3s ease-in;
+    border: 1px solid var(--bs-third);
+}
 
+.nav-link-signup{
+    background: #fff;
+    padding: 6px 18px;
+    color: var(--bs-third);
+    border: 1px solid var(--bs-third);
+    transition: 0.3s ease-in;
+}
+.nav-link-signup:hover{
+    background:  var(--bs-third);
+    color:#fff;
+}
+.nav-link-login:hover{
+    background: #fff;
+    color: var(--bs-third);
+}
 
+/* ====== > Main < ====== */
+main{
+    margin: 10px 0px 50px 0px;
+}
+.banner img{
+    width: 100%;
+
+}
+.home .card {
+    margin: 10px 10px ;
+    padding: 5px 10px;
+    background: #f7f7f7;
+    width: 400px !important;
+
+}
+.home .card h4 a{
+    font-size: 18px;
+}
 /* ===== > Sign-up page <===== */
 .customer-sighnUp .card {
     background: var(--bs-fourth);
     margin: 15px 20px;
-    min-height: 870px;
+    min-width: 100px !important;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+    outline: none;
+}
 
+.gray-body {
+    margin: 0;
+    padding: 0;
+    background: #DDD;
+    font-size: 16px;
+    color: #222;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+#main-box {
+    position: relative;
+    margin: 5% auto;
+    width: 800px;
+    height: 400px;
+    background: #FFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.login-page #main-box{
+    height: 500px;
+    background: var(--bs-fourth);
+}
+.signup-page #main-box{
+    height: 850px;
+    width: 800px;
+    background: var(--bs-fourth);
+}
+
+.left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 400px;
+    height: 400px;
+}
+
+
+.or {
+    position: absolute;
+    top: 180px;
+    left: 370px;
+    width: 40px;
+    height: 40px;
+    background: #DDD;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    line-height: 40px;
+    text-align: center;
+}
+
+.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 400px;
+    height: 400px;
+    background: url('https://goo.gl/YbktSj');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+    display: block;
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: #FFF;
+    text-align: center;
+}
+
+button.social-signin {
+    margin-bottom: 20px;
+    width: 220px;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+button.social-signin:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+    background: #32508E;
+}
+
+button.social-signin.twitter {
+    background: #55ACEE;
+}
+
+button.social-signin.google {
+    background: #DD4B39;
+}
+
+
+/* ====== > Footer <======== */
+
+footer{
+    background: #f7f7f7;
+    color: var(--bs-third) !important;
+}
+
+footer p , footer a{
+    color: var(--bs-third) !important;
+}
+footer h6 {
+color: var(--bs-primary);
 }

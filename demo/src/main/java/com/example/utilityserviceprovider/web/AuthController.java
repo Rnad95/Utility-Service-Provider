@@ -10,12 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +35,7 @@ public class AuthController {
     }
     @GetMapping("/profile")
     public String getProfile(){
+
         return "profile";
     }
     @GetMapping("/admin")
@@ -47,14 +46,47 @@ public class AuthController {
 
 
 
-    @GetMapping("/costumer-signup")
+    @GetMapping("/customer-signup")
     public String getSignupPage(){
+        Category categorya = new Category("Body");
+        Category categoryb = new Category("Engine");
+        Category categoryc = new Category("ABS System");
+        Category categorye = new Category("Airbag");
+        Category categoryf = new Category("Electrical system");
+        Category categoryj = new Category("Hybrid");
+        Category categoryh = new Category("Classic");
+        Category categorym = categoryRepo.findCategoriesByTitle("Car");
+        categorya.setParent(categorym);
+        categoryb.setParent(categorym);
+        categoryc.setParent(categorym);
+        categorye.setParent(categorym);
+        categoryf.setParent(categorym);
+        categoryj.setParent(categorym);
+        categoryh.setParent(categorym);
+        List<Category> list1 = new ArrayList<>();
+        list1.add(categorya);
+        list1.add(categoryb);
+        list1.add(categoryc);
+        list1.add(categorye);
+        list1.add(categoryf);
+        list1.add(categoryj);
+        list1.add(categoryh);
+        categorym.setChildren(list1);
+        categoryRepo.save(categorym);
+        categoryRepo.save(categorya);
+        categoryRepo.save(categoryb);
+        categoryRepo.save(categoryc);
+        categoryRepo.save(categorye);
+        categoryRepo.save(categoryf);
+        categoryRepo.save(categoryj);
+        categoryRepo.save(categoryh);
+
 
         return "customer-signup";
     }
 
 
-    @PostMapping("/costumer-signup")
+    @PostMapping("/customer-signup")
     public String postSignupUser(@ModelAttribute MyUser myUser){
         Role role = roleRepo.findRoleByName("CUSTOMER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
@@ -76,7 +108,7 @@ public class AuthController {
         return "service-signup";
     }
     @PostMapping("/service-signup")
-    public String postSignupProvider(@ModelAttribute MyUser myUser , @RequestParam String category ){
+    public String postSignupProvider(@ModelAttribute MyUser myUser){
         Role role = roleRepo.findRoleByName("SERVICEPROVIDER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
@@ -84,7 +116,20 @@ public class AuthController {
         return "login.html";
     }
 
+//************** Category Controller ****************
+
+@GetMapping("/category/{name}")
+public String getCategoryList(@PathVariable(name= "name") String name , Model model){
+        List<MyUser> categoryProviders = categoryRepo.findCategoriesByTitle(name).getUsersList();
+        model.addAttribute("Providers" , categoryProviders);
+        return "providerList";
+}
+
 //******************************
+
+
+
+
     @GetMapping("/logout")
     public RedirectView logout()
     {

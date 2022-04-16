@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider List</title>
+</head>
+<body>
+<div th:each="Provider : ${Providers}">
+    <div th:text="${Provider.firstName}"></div>
+</div>
+</body>
+</html>

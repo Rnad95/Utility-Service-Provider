@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -19,8 +20,8 @@ public class Role {
 
     private String name ;
 
-    @OneToOne(mappedBy = "role")
-    private MyUser myUser;
+    @OneToMany(mappedBy = "role")
+    private List<MyUser> myUser;
 
 
     public Role(String name) {

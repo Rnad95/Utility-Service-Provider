@@ -35,9 +35,10 @@ public class MyUser implements UserDetails {
     @JoinColumn(name = "category_id" , referencedColumnName = "id")
     private Category category;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
+
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;

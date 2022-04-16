@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home gray-body ">
+<header th:replace="common/layout :: header"></header>
+<main class = "main">
+    <div id="main-box">
+        <div class="left d-flex justify-content-center align-items-center">
+            <a href="/service-signup">
+                <img th:src="@{/assets/images/service_provider_signup.png}" class="rounded-circle mb-3" style="width: 150px;"
+                     alt="Avatar" />
+
+                <h5 class="mb-2"><strong>Service provider</strong></h5>
+            </a>
+        </div>
+
+        <div class="right d-flex justify-content-center align-items-center">
+            <a href="/customer-signup">
+                <img th:src="@{/assets/images/customer-signup.png}" class="rounded-circle mb-3" style="width: 150px;"
+                     alt="Avatar" />
+
+                <h5 class="mb-2 text-center"><strong>Customer</strong></h5>
+            </a>
+        </div>
+        <div class="or">OR</div>
+    </div>
+</main>
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+<!--                if you are logged in you will have the logout button -->
+<div sec:authorize="isAuthenticated()">
+    <h1> you are in !</h1>
+
+
+    <form action="/logout-process" method="GET">
+        <button type="submit">Sign out</button>
+    </form>
+</div>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

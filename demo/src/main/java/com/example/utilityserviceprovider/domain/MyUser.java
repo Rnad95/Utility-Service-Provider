@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -43,6 +44,12 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
+    @OneToMany
+    List<ServiceRequest> requestsList;
+
+    @OneToMany
+    List<ServiceRequest> responsesList;
+
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;
         this.firstName = firstName;
@@ -54,7 +61,17 @@ public class MyUser<set> implements UserDetails {
     }
 
     public MyUser() {
+
     }
+
+    public void addRequest(ServiceRequest request){
+        requestsList.add(request);
+    }
+
+    public void addResponse(ServiceRequest response){
+        responsesList.add(response);
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

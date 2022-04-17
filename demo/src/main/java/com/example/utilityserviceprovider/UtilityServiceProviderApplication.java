@@ -21,9 +21,7 @@ public class UtilityServiceProviderApplication {
     }
 
     @Bean
-
     CommandLineRunner initDatabase(RoleRepo repository , CategoryRepo categoryRepo) {
-
         return args -> {
             log.info("Preloading " + repository.save(new Role("ADMIN")));
             log.info("Preloading " + repository.save(new Role("CUSTOMER")));

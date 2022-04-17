@@ -38,9 +38,4 @@ public class GeneralController {
         return "index.html";
     }
 
-    @GetMapping("/signup")
-    public String getSignup(){
-        return "signup";
-    }
-
 }

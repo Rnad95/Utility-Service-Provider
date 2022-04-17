@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<div th:align="center" padding="2px">
+    <h1>Search Page</h1>
+    <form th:action="@{/render}" method="get">
+        <input type="text" name="keyword" required/>
+        <input type="submit" value="Search"/>
+    </form>
+    <h3>Service Provider List</h3>
+
+    <table th:border="1" th:margin="5">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Profile Pic</th>
+        <th>Username</th>
+        <th>Name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+<!--    Rendering the Service Provider  -->
+    <tr th:each="provider:${SerProvList}">
+        <td th:text="${provider.id}">id</td>
+        <td><a th:href="'/profile/'+${provider.id}">
+            <img th:src="${provider.getImageURL()}" alt="profile pic" style="width:200px;height:200px;">
+        </a></td>
+        <td th:text="${provider.username}">username</td>
+        <td>
+            <span th:text="${provider.firstName}"></span> &nbsp; <span th:text="${provider.lastName}"></span>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>

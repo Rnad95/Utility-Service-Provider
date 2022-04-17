@@ -9,18 +9,19 @@
     <!--        Adding tabs for company and personality details -->
 </div>
 <div>
-    <h1>Service profile</h1>
+    <h1>My profile</h1>
     <div class="">
         <img th:src="${userAcc.imageURL}" alt="Image" style="width:200px">
-<!--        <h3>Service provider Name</h3>-->
+        <!--        <h3>Service provider Name</h3>-->
         <h3 th:text="${userAcc.firstName}+' '+${userAcc.lastName}"></h3>
         <h5 th:text="${userAcc}"></h5>
 
         <!--        <p class="">Username</p>-->
         <p th:text="${userAcc.username}"></p>
         <div>
-            <!--    Rendering the Service Provider name -->
-
+            <!--    Rendering the Calrnder -->
+            <p> Here we will be Appointment </p>
+            <button type="submit">Book appointment</button>
 
         </div>
         <!--                 Adding Rate stars     -->
@@ -29,10 +30,15 @@
             <a href=""><button>Phone</button></a>
         </div>
 
-        <button type="submit">Book appointment</button>
+        <section>
+        <section th:replace="fragment :: myProfile"></section>
+        </section>
+
+
 
     </div>
 </div>
+
 
 </body>
 </html>

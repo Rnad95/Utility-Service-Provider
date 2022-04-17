@@ -15,6 +15,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
+    private String user;
     private double stars;
 
     /**
@@ -42,6 +43,9 @@ public class Review {
     }
     public double getStars() {
         return stars;
+    }
+    public String getUser() {
+        return user;
     }
 
     /**

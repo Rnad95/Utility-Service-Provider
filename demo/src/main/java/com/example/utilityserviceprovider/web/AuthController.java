@@ -58,7 +58,6 @@ public class AuthController {
         if(myUserRepo.findByUsername(myUser.getUsername())!=null)
         {
             return "customer-signup.html";
-            //we should raise an error
         }
         Role role = roleRepo.findRoleByName("CUSTOMER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));

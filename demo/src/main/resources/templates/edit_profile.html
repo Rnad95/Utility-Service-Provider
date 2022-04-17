@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Edit Profile</title>
+</head>
+<body>
+<div align="center">
+  <h1>Edit Profile</h1>
+  <br />
+<!--  <form th:action="/save" method="post" th:object="${myUser}">-->
+    <form th:action="@{/save}" method="post"  th:object="${myUser}">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>Profile ID:</td>
+        <td>
+          <input type="text" th:field="${myUser.id}" readonly="readonly" />
+        </td>
+      </tr>
+      <td>Profile username:</td>
+      <td>
+        <input type="text" th:field="${myUser.username}" readonly="readonly" />
+      </td>
+      </tr>
+      <tr>
+        <td>Profile firstName:</td>
+        <td>
+          <input type="text" th:field="${myUser.firstName}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Profile lastName:</td>
+        <td><input type="text" th:field="${myUser.lastName}" /></td>
+      </tr>
+      <tr>
+        <td>Profile imgURL:</td>
+        <td><input type="text" th:field="${myUser.imageURL}" /></td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td><input type="text" th:field="${myUser.phoneNumber}" /></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><input type="text" th:field="${myUser.email}" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

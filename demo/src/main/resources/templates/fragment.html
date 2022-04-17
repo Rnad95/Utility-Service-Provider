@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<section th:fragment="myProfile" class="myProfile">
+
+    <form th:action="'/edit/'+${userAcc.id}">
+        <h3>Edit My account</h3>
+        <p name="body" th:text="' Username ' + ${userAcc.firstName}"></p>
+        <br>
+        <input type="submit" value="Edit" />
+    </form>
+    <form th:action="'/delete/'+${userAcc.id}">
+        <h3>delete My account</h3>
+        <br>
+        <input type="submit" value="delete" />
+    </form>
+</section>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.example.utilityserviceprovider.domain;
 
+import com.example.utilityserviceprovider.infrastructure.ReviewRepository;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,12 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class MyUser<set> implements UserDetails {
+public class MyUser<set> implements UserDetails{
 
     @Setter(value= AccessLevel.NONE)
     @Id
@@ -31,7 +33,15 @@ public class MyUser<set> implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
-// look for two ways relations
+    private  double NumOfStar;
+    double avgStar =0.0;
+    double sumReviewStars = 0.0;
+    int repeatedUser;
+//    List<Review> ListOFReview;
+
+
+
+    // look for two ways relations
     //relationship with category
     @ManyToOne
     @JoinColumn(name = "category_id" , referencedColumnName = "id")
@@ -55,6 +65,28 @@ public class MyUser<set> implements UserDetails {
 
     public MyUser() {
     }
+
+//    public void addReview(Review review){
+//        Boolean flag = false;
+//        for (Review rev : this.ListOFReview) {
+//            if (rev.getUser() == review.getUser()) {
+//                flag = true;
+//                repeatedUser++;
+//                break;
+//            }
+//        }
+//        if (flag == true) {
+//            ListOFReview.add(review);
+//        } else {
+//            ListOFReview.add(review);
+//            updateStars(review);
+//        }
+//    }
+//    protected void  updateStars(Review review){
+//        sumReviewStars = sumReviewStars +  review.getStars();
+//        avgStar = sumReviewStars/ (ListOFReview.size()- repeatedUser);
+//        this.NumOfStar = (double) Math.round(avgStar * 5) / 5;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,6 +115,7 @@ public class MyUser<set> implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 
     @Override
     public String toString() {

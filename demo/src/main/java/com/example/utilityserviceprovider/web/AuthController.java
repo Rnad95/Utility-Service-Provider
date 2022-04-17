@@ -1,5 +1,6 @@
 package com.example.utilityserviceprovider.web;
 
+
 import com.example.utilityserviceprovider.domain.Category;
 import com.example.utilityserviceprovider.domain.MyUser;
 import com.example.utilityserviceprovider.domain.Role;
@@ -9,13 +10,9 @@ import com.example.utilityserviceprovider.infrastructure.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +21,7 @@ public class AuthController {
 
     @Autowired
     PasswordEncoder encoder;
+
     @Autowired
     MyUserRepo myUserRepo;
     @Autowired
@@ -67,6 +65,7 @@ public class AuthController {
         return "login.html";
     }
 
+
 //*****************************
     @GetMapping("/service-profile")
     public String getService(){
@@ -94,6 +93,21 @@ public class AuthController {
         return "login.html";
     }
 
+    //--------------------------------------------------customer or service provider ?
+    @GetMapping("/signup")
+    public String getWhichSignupPage() {
+        return "signupSpecify";
+    }
+
+
+    //--------------------------------------------------customer profile
+    @GetMapping("/customer-profile/{id}")   // need the root name from hamzeh
+    public String getCustomerProfile(Model model , @PathVariable long id ){
+        MyUser user = new MyUser();
+        user=myUserRepo.findById(id).orElseThrow();
+        model.addAttribute("user",user);
+
+        return"profile";
 //******************************
     @GetMapping("/logout")
     public RedirectView logout()

@@ -1,5 +1,6 @@
 package com.example.utilityserviceprovider.web;
 
+
 import com.example.utilityserviceprovider.domain.Category;
 import com.example.utilityserviceprovider.domain.MyUser;
 import com.example.utilityserviceprovider.domain.ServiceRequest;
@@ -25,6 +26,7 @@ public class GeneralController {
 
     @GetMapping("/")
     public String getHomePage(){
+
         return "index.html";
     }
 

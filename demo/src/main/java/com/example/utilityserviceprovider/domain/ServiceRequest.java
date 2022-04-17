@@ -13,6 +13,7 @@ public class ServiceRequest {
     /**
      * Creating datafield id, date, doneRequest
      */
+
     //id   date  ..etc   customer_id  provider_id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

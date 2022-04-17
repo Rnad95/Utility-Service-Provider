@@ -1,15 +1,20 @@
 package com.example.utilityserviceprovider.web;
 
+
+import com.example.utilityserviceprovider.domain.Category;
 import com.example.utilityserviceprovider.domain.MyUser;
 import com.example.utilityserviceprovider.domain.Role;
+import com.example.utilityserviceprovider.infrastructure.CategoryRepo;
 import com.example.utilityserviceprovider.infrastructure.MyUserRepo;
 import com.example.utilityserviceprovider.infrastructure.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.view.RedirectView;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class AuthController {
@@ -19,59 +24,71 @@ public class AuthController {
 
     @Autowired
     MyUserRepo myUserRepo;
-
     @Autowired
     RoleRepo roleRepo;
+    @Autowired
+    CategoryRepo categoryRepo;
 
     @GetMapping("/login")
-    public String getLoginPage() {
+    public String getLoginPage(){
         return "login";
     }
-
     @GetMapping("/profile")
-    public String getProfile() {
+    public String getProfile(){
         return "profile";
     }
-
     @GetMapping("/admin")
-    public String getAdmin() {
+    public String getAdmin(){
         return "admin";
     }
 
-    @GetMapping("/costumer-signup")
-    public String getSignupPage() {
-        return "signup";
+
+
+
+    @GetMapping("/customer-signup")
+    public String getSignupPage(){
+
+        return "customer-signup";
     }
 
-    @PostMapping("/costumer-signup")
-    public String postSignupUser(@ModelAttribute MyUser myUser) {
-
+    @PostMapping("/customer-signup")
+    public String postSignupUser(@ModelAttribute MyUser myUser){
+        if(myUserRepo.findByUsername(myUser.getUsername())!=null)
+        {
+            return "customer-signup.html";
+            //we should raise an error
+        }
         Role role = roleRepo.findRoleByName("CUSTOMER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
-        System.out.println(myUser);
         myUserRepo.save(myUser);
         return "login.html";
     }
 
-    @GetMapping("/logout")
-    public RedirectView logout() {
-        return new RedirectView("/");
+
+//*****************************
+    @GetMapping("/service-profile")
+    public String getService(){
+    return "service-profile";
+}
+
+    @GetMapping("/service-signup")
+    public String getProviderSignupPage(Model model){
+        List<Category> categories = categoryRepo.findAll();
+        categories =  categories.stream().filter(index -> index.getParent() == null).collect(Collectors.toList());
+        model.addAttribute("categories",categories);
+        return "service-signup";
     }
-
-    //-------------------------------------------------------service provider sign up
-    @GetMapping("/sp-signup")
-    public String getSignupPageSP() {
-        return "signupSP"; //needs to be created or changed to the html file name (fixed with hadeel)
-    }
-
-    @PostMapping("/sp-signup")
-    public String postSignupUserSP(@ModelAttribute MyUser myUser) {
-
+    @PostMapping("/service-signup")
+    public String postSignupProvider(@ModelAttribute MyUser myUser ){
+        if(myUserRepo.findByUsername(myUser.getUsername())!=null)
+        {
+            return "service-signup.html";
+            //we should raise an error
+        }
         Role role = roleRepo.findRoleByName("SERVICEPROVIDER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
-        System.out.println(myUser);
         myUserRepo.save(myUser);
         return "login.html";
     }
@@ -91,6 +108,11 @@ public class AuthController {
         model.addAttribute("user",user);
 
         return"profile";
+//******************************
+    @GetMapping("/logout")
+    public RedirectView logout()
+    {
+        return new RedirectView("/");
     }
 
 }

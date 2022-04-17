@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+
+<!--        Service-Provider signup         -->
+<h1>Service-provider signup</h1>
+<form action="/service-signup" method="POST">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+    <br>
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" id="firstName">
+    <br>
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName" id="lastName">
+    <br>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <label for="phoneNumber">Phone Number</label>
+    <input type="text" name="phoneNumber" id="phoneNumber">
+    <br>
+    <label for="email">email</label>
+    <input type="text" name="email" id="email">
+    <br>
+    <label for="category">Choose a category:</label>
+    <select class="form-control" id="category" name="category" required>
+        <option>All</option>
+        <div th:each="category : ${categories}">
+            <option class="optionGroup"  th:text="${category.title}" th:value="${category.id}"></option>
+            <option  class="optionChild" th:each="subCategory : ${category.children}"  th:text="'--' + ${subCategory.title}" th:value="${subCategory.id}"></option>
+        </div>
+    </select>
+    <br>
+    <label for="imageURL">Profile Picture</label>
+    <input type="text" name="imageURL" id="imageURL">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<!--        go to login page        -->
+<form action="/login" method="GET">
+    <h1>Already have an account? Login! </h1>
+    <button type="submit">Login</button>
+</form>
+
+
+<!--        go back home         -->
+<form action="/" method="GET">
+    <button type="submit">Home</button>
+</form>
+</body>
+</html>

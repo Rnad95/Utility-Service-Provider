@@ -9,16 +9,21 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
-public class MyUser implements UserDetails {
+
+public class MyUser<set> implements UserDetails {
 
     @Setter(value= AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private int id ;
+
+    private Long id ;
 
     @Column(unique = true)
     private  String username;
@@ -30,9 +35,23 @@ public class MyUser implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
-    @OneToOne
+
+    //relationship with category
+    @ManyToOne
+    @JoinColumn(name = "category_id" , referencedColumnName = "id")
+    private Category category;
+
+
+    //relationship with role
+    @ManyToOne
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
+
+    @OneToMany
+    List<ServiceRequest> requestsList;
+
+    @OneToMany
+    List<ServiceRequest> responsesList;
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;
@@ -46,7 +65,17 @@ public class MyUser implements UserDetails {
     }
 
     public MyUser() {
+
     }
+
+    public void addRequest(ServiceRequest request){
+        requestsList.add(request);
+    }
+
+    public void addResponse(ServiceRequest response){
+        responsesList.add(response);
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -11,10 +11,25 @@
     <div id="main-box">
         <div class="left d-flex justify-content-center align-items-center">
 
+<<<<<<< HEAD
                 <img th:src="@{/assets/images/Service-login.png}" class="img-fluid" alt="Sample image">
+=======
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
+
+                                  
+                                    <form  action="/login-process" method="POST">
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label" for="username">UserName</label>
+                                                <input id="username" class="form-control" type="text" name="username" >
+                                            </div>
+                                        </div>
+>>>>>>> d76d375893f02e81927910822046a9f0f480707c
 
         </div>
 
+<<<<<<< HEAD
         <div class="right">
             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Log in</p>
             <form  action="/login-process" method="POST">
@@ -23,6 +38,23 @@
                     <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="username">UserName</label>
                         <input id="username" class="form-control" type="text" name="username" >
+=======
+                                        <div class="d-flex justify-content-center align-items-center mx-4 mb-3 mb-lg-4">
+                                            <button type="submit" class="btn btn-primary ">Login</button>
+                                        </div>
+                                        <div class="text-center mx-2">
+                                            Don't have an account?
+
+                                            <a href="/customer-signup">Signup!!</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-1 mr-3">
+                                    <img th:src="@{/assets/images/Service-login.png}" class="img-fluid" alt="Sample image">
+                                </div>
+                            </div>
+                        </div>
+>>>>>>> d76d375893f02e81927910822046a9f0f480707c
                     </div>
                 </div>
 

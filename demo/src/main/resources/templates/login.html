@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -10,9 +10,7 @@
 <header th:replace="common/layout :: header"></header>
     <div id="main-box">
         <div class="left d-flex justify-content-center align-items-center">
-
                 <img th:src="@{/assets/images/Service-login.png}" class="img-fluid" alt="Sample image">
-
         </div>
 
         <div class="right">
@@ -25,7 +23,6 @@
                         <input id="username" class="form-control" type="text" name="username" >
                     </div>
                 </div>
-
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
@@ -33,7 +30,6 @@
                         <input type="password" id="password" class="form-control" name="password" />
                     </div>
                 </div>
-
                 <div class="d-flex justify-content-center align-items-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-primary ">Login</button>
                 </div>
@@ -46,11 +42,6 @@
         </div>
     </div>
 
-
-
-
-
-        </section>
     </div>
     <footer th:replace="common/layout :: footer"></footer>
 <script th:src = "@{/js/bootstrap.min.js}"></script>

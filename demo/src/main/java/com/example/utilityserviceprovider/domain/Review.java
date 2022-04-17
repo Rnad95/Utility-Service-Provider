@@ -13,6 +13,7 @@ public class Review {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String content;
     private double stars;
@@ -34,6 +35,7 @@ public class Review {
      *
      * @Getter and
      */
+
     public Long getId() {
         return id;
     }

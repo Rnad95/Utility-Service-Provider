@@ -14,13 +14,27 @@ public class ServiceRequest {
     /**
      * Creating datafield id, date, doneRequest
      */
+
+    //id   date  ..etc   customer_id  provider_id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @CreationTimestamp
-    private Date date;
+
+//    @CreationTimestamp
+//    private Date date; //must be checked to be unique (manually)
+
     private boolean doneRequest;
     private boolean accepted;
+
+    private String details;
+    private String location;
+    //relationships
+    @ManyToOne
+    MyUser provider;
+
+    @ManyToOne
+    MyUser customer;
+
 
     /**
      *
@@ -31,10 +45,13 @@ public class ServiceRequest {
     public ServiceRequest() {
     }
 
-    public ServiceRequest(Date date, boolean doneRequest,boolean accepted) {
-        this.date = date;
+
+    public ServiceRequest(String details,String location) {
+//        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
+        this.details=details;
+        this.location=location;
     }
 
     public boolean isDoneRequest() {
@@ -42,4 +59,17 @@ public class ServiceRequest {
     }
 
 
+
+    @Override
+    public String toString() {
+        return "ServiceRequest{" +
+                "doneRequest=" + doneRequest +
+                ", accepted=" + accepted +
+                ", details='" + details + '\'' +
+                ", location='" + location + '\'' +
+                ", provider=" + provider +
+                ", customer=" + customer +
+                '}';
+    }
 }
+

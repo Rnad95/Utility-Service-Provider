@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
@@ -28,7 +28,7 @@
     <input type="text" name="email" id="email">
     <br>
     <label for="category">Choose a category:</label>
-    <select class="form-control" id="category" name="category">
+    <select class="form-control" id="category" name="category" required>
         <option>All</option>
         <div th:each="category : ${categories}">
             <option class="optionGroup"  th:text="${category.title}" th:value="${category.id}"></option>

@@ -6,12 +6,15 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id" , nullable = false)
@@ -19,8 +22,9 @@ public class Role {
 
     private String name ;
 
-    @OneToOne(mappedBy = "role")
-    private MyUser myUser;
+
+    @OneToMany(mappedBy = "role")
+    private List<MyUser> myUser;
 
 
     public Role(String name) {

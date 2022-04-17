@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" th:href="@{/css/request.css}">-->
+
+    <title>Create Request</title>
+</head>
+<body>
+<form th:action="@{/addRequest/{id}(id=${provider.id})}" method="POST">
+
+<!--    <label for="date">Date</label>-->
+<!--    <input id="date" type="date" name="date">-->
+
+    <label for="details">Service Details</label>
+    <input id="details" type="text" name="details">
+
+    <label for="location">Location</label>
+    <input id="location" type="text" name="location">
+
+    <button type="submit">Submit</button>
+</div>
+
+</form>
+
+</body>
+</html>

@@ -11,9 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
+
 public class UtilityServiceProviderApplication {
     private static final Logger log = LoggerFactory.getLogger(UtilityServiceProviderApplication.class);
     public static void main(String[] args) {

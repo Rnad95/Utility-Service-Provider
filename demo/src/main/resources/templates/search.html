@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<div th:align="center">
+    <h1>Search Page</h1>
+    <form th:action="@{/search}">
+        <input type="text" name="keyword" required/>
+        <input type="submit" value="Search"/>
+    </form>
+<table >
+    <thead>
+    <tr align="center">
+        <th>Information</th>
+    </tr>
+    </thead>
+    <tbody>
+<!--    Rendering the Service Provider  -->
+    <tr th:each="provider:${SerProvList}">
+        <td th:text="${provider.username}">username</td>
+        <td th:text="${provider.firstName}">firsName</td>
+        <td th:text="${provider.lastName}">lastName</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

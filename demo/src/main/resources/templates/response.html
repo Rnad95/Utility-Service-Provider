@@ -7,13 +7,24 @@
 <body>
     <div>
         <div>
-            <p th:text="${request.details}"></p>
-            <p th:text="${request.date}"></p>
-            <p th:text="${request.location}"></p>
+            <p th:text="${request.details}" class="details"></p>
+<!--            <p th:text="${request.date}"></p>-->
+            <p th:text="${request.location}" class="location"></p>
         </div>
         <div>
-            <a href="/accept-request">Accept</a>
-            <a href="/reject-request">Reject</a>
+            <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST">
+            <button type="submit">
+                Reject
+            </button>
+            </form>
+            <form th:action="@{/accept-request/{id}(id=${request.id})}" method="POST">
+            <button type="submit">
+                Accept
+            </button>
+            </form>
+
+<!--            <a th:href="@{/reject-request/{id}(id=${request.id})}" method="POST">Reject</a>-->
+<!--            <a th:href="@{/accept-request/{id}(id=${request.id})}" method="POST">Accept</a>-->
         </div>
     </div>
 </body>

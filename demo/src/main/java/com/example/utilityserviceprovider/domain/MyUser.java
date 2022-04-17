@@ -12,15 +12,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 @Getter
 @Setter
 @Entity
 public class MyUser<set> implements UserDetails{
 
+
     @Setter(value= AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
+
     private Long id ;
 
     @Column(unique = true)
@@ -42,6 +45,7 @@ public class MyUser<set> implements UserDetails{
 
 
     // look for two ways relations
+
     //relationship with category
     @ManyToOne
     @JoinColumn(name = "category_id" , referencedColumnName = "id")
@@ -53,6 +57,12 @@ public class MyUser<set> implements UserDetails{
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
+    @OneToMany
+    List<ServiceRequest> requestsList;
+
+    @OneToMany
+    List<ServiceRequest> responsesList;
+
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;
         this.firstName = firstName;
@@ -61,9 +71,15 @@ public class MyUser<set> implements UserDetails{
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
+
     }
 
     public MyUser() {
+
+    }
+
+    public void addRequest(ServiceRequest request){
+        requestsList.add(request);
     }
 
 //    public void addReview(Review review){
@@ -87,6 +103,12 @@ public class MyUser<set> implements UserDetails{
 //        avgStar = sumReviewStars/ (ListOFReview.size()- repeatedUser);
 //        this.NumOfStar = (double) Math.round(avgStar * 5) / 5;
 //    }
+
+    public void addResponse(ServiceRequest response){
+        responsesList.add(response);
+    }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

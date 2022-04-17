@@ -1,84 +1,17 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" >
-=======
+
+
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-<<<<<<< HEAD
-    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
-</head>
-<body class = "home">
-<header th:replace="common/layout :: header"></header>
-
-
-
-<main class = "main">
-    <div class="container">
-        <div class="row mb-3">
-            <div class="banner">
-                <img th:src="@{/assets/images/banner.png}" alt="banner" >
-            </div>
-        </div>
-
-        <div class="d-flex flex-wrap flex-row">
-            <div th:each="category : ${categories}">
-                       <div class = "card">
-                           <h4><a th:href="@{'/category/' + ${category.title}}" th:text="${category.title}"></a></h4>
-                           <nav class="container d-flex justify-content-center align-items-center flex-wrap">
-                               <div th:each="subCategory : ${category.children}" class="mx-2">
-                                   <a th:href="@{'/category/' + ${subCategory.title}}" th:text="${subCategory.title}"></a>
-                               </div>
-                           </nav>
-                       </div>
-                   </div>
-            </div>
-    </div>
-</main>
-<!-- Footer -->
-<footer th:replace="common/layout :: footer"></footer>
-
-<!--                if you are logged in you will have the logout button -->
-<div sec:authorize="isAuthenticated()">
-    <h1> you are in !</h1>
-
-
-    <form action="/logout-process" method="GET">
-        <button type="submit">Sign out</button>
-    </form>
-</div>
-
-=======
 <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
 <body class = "home">
     <header class = "header">
-<!--        <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--            <div class = "container-fluid">-->
-<!--                <div class = "col-2">-->
-<!--                    <img src="C:\Users\Lenovo\Desktop\Utility-Service-Provider\demo\src\main\resources\templates\cultures.png" alt="culturer">-->
-<!--                </div>-->
-<!--                    <div class = "col-4">-->
-<!--                        <img src="C:\Users\Lenovo\Desktop\Utility-Service-Provider\demo\src\main\resources\templates\search (1).png" alt="search">-->
-<!--                        <input type="text" placeholder="Search..">-->
-<!--                    </div>-->
-<!--                        <div class = "header-right">-->
-<!--                             <div class = "col-2">-->
-<!--                                    <a href="/costumer-signup">signup</a>-->
-<!--                             </div>-->
-<!--                                   <div class = "col-2">-->
-<!--                                            <a href="/login">login</a>-->
-<!--                                   </div>-->
-<!--                                          <div class = "col-2">-->
-<!--                                            <a href="#contact">About us</a>-->
-<!--                                          </div>-->
-<!--                        </div>-->
-<!--            </div>-->
-<!--        </nav>-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>

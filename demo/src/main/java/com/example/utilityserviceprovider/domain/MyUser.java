@@ -41,23 +41,18 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "category_id" , referencedColumnName = "id")
     private Category category;
 
-<<<<<<< HEAD
-=======
 
-    //relationship with role
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
     @ManyToOne
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
-<<<<<<< HEAD
-=======
+
     @OneToMany
     List<ServiceRequest> requestsList;
 
     @OneToMany
     List<ServiceRequest> responsesList;
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
         this.username = username;

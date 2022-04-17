@@ -32,26 +32,29 @@ public class ReqResController {
         return "request.html";
     }
 
-    @PostMapping("/addRequest/{id}") //id in the route is the provider's id
-    public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
-        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation());
-//        bring the provider
-        MyUser provider = myUserRepo.findById(id).orElseThrow();
-        newRequest.setProvider(provider);
-        //bring the customer
-        MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newRequest.setCustomer(customer);
-        //save the request
-        requestRepository.save(newRequest);
-        System.out.println("************************going to the home*********************************"+request.toString());
 
-        //add the request to lists
-//        customer.addRequest(request);
-//        provider.addRequest(request);
+    // Resolve conflict
 
-
-        return new RedirectView("/"); //must be changed to redirect us to the provider's page
-    }
+//    @PostMapping("/addRequest/{id}") //id in the route is the provider's id
+//    public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
+//        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation());
+////        bring the provider
+//        MyUser provider = myUserRepo.findById(id).orElseThrow();
+//        newRequest.setProvider(provider);
+//        //bring the customer
+//        MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        newRequest.setCustomer(customer);
+//        //save the request
+//        requestRepository.save(newRequest);
+//        System.out.println("************************going to the home*********************************"+request.toString());
+//
+//        //add the request to lists
+////        customer.addRequest(request);
+////        provider.addRequest(request);
+//
+//
+//        return new RedirectView("/"); //must be changed to redirect us to the provider's page
+//    }
     //-----------------------------------------------------------------------------
 
     @GetMapping("/request/{id}") // id = request id

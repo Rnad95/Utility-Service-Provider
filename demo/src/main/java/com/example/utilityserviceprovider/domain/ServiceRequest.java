@@ -1,9 +1,6 @@
 package com.example.utilityserviceprovider.domain;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,8 +25,7 @@ public class ServiceRequest {
 
     private boolean doneRequest;
     private boolean accepted;
-<<<<<<< HEAD
-=======
+
     private String details;
     private String location;
     //relationships
@@ -38,7 +34,7 @@ public class ServiceRequest {
 
     @ManyToOne
     MyUser customer;
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
 
     /**
      *
@@ -48,31 +44,22 @@ public class ServiceRequest {
 
     public ServiceRequest() {
     }
-<<<<<<< HEAD
 
-    public ServiceRequest(Date date, boolean doneRequest,boolean accepted) {
-        this.date = date;
-        this.doneRequest = false; //not done when created
-        this.accepted=false;    // not accepted when created
-=======
-//    Date date,
-    public ServiceRequest(String details ,String location) {
+
+    public ServiceRequest(boolean doneRequest,boolean accepted) {
 //        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
         this.details=details;
         this.location=location;
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
     }
 
     public boolean isDoneRequest() {
         return doneRequest;
     }
 
-<<<<<<< HEAD
 
-}
-=======
+
     @Override
     public String toString() {
         return "ServiceRequest{" +
@@ -85,4 +72,4 @@ public class ServiceRequest {
                 '}';
     }
 }
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+

@@ -17,27 +17,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
+
 import java.util.List;
-<<<<<<< HEAD
+
 import java.util.stream.Collectors;
-=======
-import java.util.Optional;
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
+
+
 
 @Controller
 public class GeneralController {
+   @Autowired
+   CategoryRepo categoryRepo;
 
     @GetMapping("/")
-<<<<<<< HEAD
     public String getHomePage(Model model){
         List<Category> categories = categoryRepo.findAll();
         categories =  categories.stream().filter(index -> index.getParent() == null).collect(Collectors.toList());
         model.addAttribute("categories",categories);
-=======
-    public String getHomePage(){
-
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
         return "index.html";
     }
 

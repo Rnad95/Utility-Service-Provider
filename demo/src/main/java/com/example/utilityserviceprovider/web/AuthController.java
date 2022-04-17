@@ -12,14 +12,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
-=======
-import org.springframework.web.servlet.view.RedirectView;
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,47 +52,45 @@ public class AuthController {
 
     @GetMapping("/customer-signup")
     public String getSignupPage(){
-        Category categorya = new Category("Body");
-        Category categoryb = new Category("Engine");
-        Category categoryc = new Category("ABS System");
-        Category categorye = new Category("Airbag");
-        Category categoryf = new Category("Electrical system");
-        Category categoryj = new Category("Hybrid");
-        Category categoryh = new Category("Classic");
-        Category categorym = categoryRepo.findCategoriesByTitle("Car");
-        categorya.setParent(categorym);
-        categoryb.setParent(categorym);
-        categoryc.setParent(categorym);
-        categorye.setParent(categorym);
-        categoryf.setParent(categorym);
-        categoryj.setParent(categorym);
-        categoryh.setParent(categorym);
-        List<Category> list1 = new ArrayList<>();
-        list1.add(categorya);
-        list1.add(categoryb);
-        list1.add(categoryc);
-        list1.add(categorye);
-        list1.add(categoryf);
-        list1.add(categoryj);
-        list1.add(categoryh);
-        categorym.setChildren(list1);
-        categoryRepo.save(categorym);
-        categoryRepo.save(categorya);
-        categoryRepo.save(categoryb);
-        categoryRepo.save(categoryc);
-        categoryRepo.save(categorye);
-        categoryRepo.save(categoryf);
-        categoryRepo.save(categoryj);
-        categoryRepo.save(categoryh);
+//        Category categorya = new Category("Body");
+//        Category categoryb = new Category("Engine");
+//        Category categoryc = new Category("ABS System");
+//        Category categorye = new Category("Airbag");
+//        Category categoryf = new Category("Electrical system");
+//        Category categoryj = new Category("Hybrid");
+//        Category categoryh = new Category("Classic");
+//        Category categorym = categoryRepo.findCategoriesByTitle("Car");
+//        categorya.setParent(categorym);
+//        categoryb.setParent(categorym);
+//        categoryc.setParent(categorym);
+//        categorye.setParent(categorym);
+//        categoryf.setParent(categorym);
+//        categoryj.setParent(categorym);
+//        categoryh.setParent(categorym);
+//        List<Category> list1 = new ArrayList<>();
+//        list1.add(categorya);
+//        list1.add(categoryb);
+//        list1.add(categoryc);
+//        list1.add(categorye);
+//        list1.add(categoryf);
+//        list1.add(categoryj);
+//        list1.add(categoryh);
+//        categorym.setChildren(list1);
+//        categoryRepo.save(categorym);
+//        categoryRepo.save(categorya);
+//        categoryRepo.save(categoryb);
+//        categoryRepo.save(categoryc);
+//        categoryRepo.save(categorye);
+//        categoryRepo.save(categoryf);
+//        categoryRepo.save(categoryj);
+//        categoryRepo.save(categoryh);
 
 
         return "customer-signup";
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
     @PostMapping("/customer-signup")
     public String postSignupUser(@ModelAttribute MyUser myUser){
         if(myUserRepo.findByUsername(myUser.getUsername())!=null)
@@ -125,16 +120,14 @@ public class AuthController {
         return "service-signup";
     }
     @PostMapping("/service-signup")
-<<<<<<< HEAD
-    public String postSignupProvider(@ModelAttribute MyUser myUser){
-=======
+
     public String postSignupProvider(@ModelAttribute MyUser myUser ){
         if(myUserRepo.findByUsername(myUser.getUsername())!=null)
         {
             return "service-signup.html";
             //we should raise an error
         }
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+
         Role role = roleRepo.findRoleByName("SERVICEPROVIDER");
         myUser.setPassword(encoder.encode(myUser.getPassword()));
         myUser.setRole(role);
@@ -142,7 +135,7 @@ public class AuthController {
         return "login.html";
     }
 
-<<<<<<< HEAD
+
 //************** Category Controller ****************
 
 @GetMapping("/category/{name}")
@@ -152,7 +145,7 @@ public String getCategoryList(@PathVariable(name= "name") String name , Model mo
         return "providerList";
 }
 
-=======
+
     //--------------------------------------------------customer or service provider ?
     @GetMapping("/signup")
     public String getWhichSignupPage() {
@@ -162,15 +155,14 @@ public String getCategoryList(@PathVariable(name= "name") String name , Model mo
 
     //--------------------------------------------------customer profile
     @GetMapping("/customer-profile/{id}")   // need the root name from hamzeh
-    public String getCustomerProfile(Model model , @PathVariable long id ){
+    public String getCustomerProfile(Model model , @PathVariable long id ) {
         MyUser user = new MyUser();
-        user=myUserRepo.findById(id).orElseThrow();
-        model.addAttribute("user",user);
+        user = myUserRepo.findById(id).orElseThrow();
+        model.addAttribute("user", user);
 
-        return"profile";
->>>>>>> d76d375893f02e81927910822046a9f0f480707c
+        return "profile";
+    }
 //******************************
-
 
 
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+
 @Controller
 public class ReqResController {
     @Autowired
@@ -35,26 +37,26 @@ public class ReqResController {
 
     // Resolve conflict
 
-//    @PostMapping("/addRequest/{id}") //id in the route is the provider's id
-//    public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
-//        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation());
-////        bring the provider
-//        MyUser provider = myUserRepo.findById(id).orElseThrow();
-//        newRequest.setProvider(provider);
-//        //bring the customer
-//        MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        newRequest.setCustomer(customer);
-//        //save the request
-//        requestRepository.save(newRequest);
-//        System.out.println("************************going to the home*********************************"+request.toString());
-//
-//        //add the request to lists
-////        customer.addRequest(request);
-////        provider.addRequest(request);
-//
-//
-//        return new RedirectView("/"); //must be changed to redirect us to the provider's page
-//    }
+    @PostMapping("/addRequest/{id}") //id in the route is the provider's id
+    public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
+        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation());
+//        bring the provider
+        MyUser provider = myUserRepo.findById(id).orElseThrow();
+        newRequest.setProvider(provider);
+        //bring the customer
+        MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        newRequest.setCustomer(customer);
+        //save the request
+        requestRepository.save(newRequest);
+        System.out.println("************************going to the home*********************************"+request.toString());
+
+        //add the request to lists
+//        customer.addRequest(request);
+//        provider.addRequest(request);
+
+
+        return new RedirectView("/profile/{id}"); //must be changed to redirect us to the provider's page
+    }
     //-----------------------------------------------------------------------------
 
     @GetMapping("/request/{id}") // id = request id
@@ -72,7 +74,7 @@ public class ReqResController {
         request.setAccepted(true);
         System.out.println("*************************accept********************************"+request.toString());
         requestRepository.save(request);
-        return new RedirectView("/"); //returning to the provider's page /profile/{id}
+        return new RedirectView("/requests/{id}"); //returning to the provider's page /profile/{id}
     }
     @PostMapping("/reject-request/{id}") //id is the id of the request
     public RedirectView rejectRequest (@PathVariable Long id){
@@ -83,10 +85,23 @@ public class ReqResController {
 
         System.out.println("*************************reject********************************"+request.toString());
 
-        return new RedirectView("/"); //returning to the provider's page /profile/{id}
+        return new RedirectView("/requests/{id}"); //returning to the provider's page /profile/{id}
+    }
+
+    @PostMapping("/done-request/{id}")//id is the id of the request
+    public RedirectView doneRequest (@PathVariable Long id){
+        ServiceRequest request=requestRepository.findById(id).orElseThrow();
+        request.setDoneRequest(true);
+        return new RedirectView("/requests/{id}");
     }
     //--------------------------------------------------------------------------------
-
+        @GetMapping("/requests/{id}")
+        public String checkingPSRequests (@PathVariable Long id ,Model model ){
+        MyUser provider=myUserRepo.findById(id).orElseThrow();
+        List<ServiceRequest> requests = requestRepository.findAllByProviderId(id);
+        model.addAttribute("requests",requests);
+        return "provider-requests.html";
+        }
 
 
     //---------------------------------------------------------------------------------

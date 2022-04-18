@@ -46,7 +46,7 @@ public class ServiceRequest {
     }
 
 
-    public ServiceRequest(boolean doneRequest,boolean accepted) {
+    public ServiceRequest(String details,String location) {
 //        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created

@@ -45,6 +45,4 @@ public class GeneralController {
         model.addAttribute("categories",categories);
         return "index.html";
     }
-
-
 }

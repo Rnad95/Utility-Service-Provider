@@ -23,6 +23,12 @@
             </button>
             </form>
 
+            <form th:action="@{/done-request/{id}(id=${request.id})}" method="POST">
+            <button type="submit">
+                Done
+            </button>
+            </form>
+
 <!--            <a th:href="@{/reject-request/{id}(id=${request.id})}" method="POST">Reject</a>-->
 <!--            <a th:href="@{/accept-request/{id}(id=${request.id})}" method="POST">Accept</a>-->
         </div>

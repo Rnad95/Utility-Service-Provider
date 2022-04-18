@@ -29,7 +29,7 @@
     <br>
     <label for="category">Choose a category:</label>
     <select class="form-control" id="category" name="category" required>
-        <option>All</option>
+        <option value="">All</option>
         <div th:each="category : ${categories}">
             <option class="optionGroup"  th:text="${category.title}" th:value="${category.id}"></option>
             <option  class="optionChild" th:each="subCategory : ${category.children}"  th:text="'--' + ${subCategory.title}" th:value="${subCategory.id}"></option>

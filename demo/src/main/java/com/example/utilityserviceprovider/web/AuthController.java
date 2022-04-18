@@ -149,7 +149,7 @@ public String getCategoryList(@PathVariable(name= "name") String name , Model mo
     //--------------------------------------------------customer or service provider ?
     @GetMapping("/signup")
     public String getWhichSignupPage() {
-        return "signupSpecify";
+        return "signup";
     }
 
 

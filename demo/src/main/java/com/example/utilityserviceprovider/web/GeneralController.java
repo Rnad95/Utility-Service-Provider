@@ -8,7 +8,10 @@ import com.example.utilityserviceprovider.infrastructure.CategoryRepo;
 import com.example.utilityserviceprovider.infrastructure.MyUserRepo;
 import com.example.utilityserviceprovider.infrastructure.ServiceRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,13 +37,14 @@ public class GeneralController {
     public String getHomePage(Model model){
         List<Category> categories = categoryRepo.findAll();
         categories =  categories.stream().filter(index -> index.getParent() == null).collect(Collectors.toList());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            model.addAttribute("username" , userDetails.getUsername());
+        }
         model.addAttribute("categories",categories);
         return "index.html";
     }
 
-    @GetMapping("/signup")
-    public String getSignup(){
-        return "signup";
-    }
 
 }

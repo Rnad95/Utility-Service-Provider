@@ -19,9 +19,13 @@
         <!--        <p class="">Username</p>-->
         <p th:text="${userAcc.username}"></p>
         <div>
-            <!--    Rendering the Calrnder -->
+            <!--    Rendering the Calender -->
             <p> Here we will be Appointment </p>
             <button type="submit">Book appointment</button>
+
+            <a th:href="'/requests/'+${userAcc.id}">
+                <button type="submit">Check Requests</button>
+            </a>
 
         </div>
         <!--                 Adding Rate stars     -->

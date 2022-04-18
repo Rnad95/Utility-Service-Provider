@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.List;
@@ -34,12 +35,6 @@ public class SearchController {
 //        return "search";
 //    }
 
-    @GetMapping("/allProvider")
-    public String getAllProvider (Model model){
-        List<MyUser> listProvider = myUserRepo.findAll();
-        model.addAttribute("SerProvList", listProvider);
-        return "search";
-    }
 //
 //    @RequestMapping("/render")
 //    String viewRenderPage(Model model, @Param("keyword") String keyword){
@@ -49,7 +44,7 @@ public class SearchController {
 //    }
 
 
-    @RequestMapping("/render")
+    @RequestMapping("/allProviders")
     String viewRenderPage(Model model, @Param("keyword") String keyword){
         List<MyUser> listProvider = providerService.listAll(keyword);
         model.addAttribute("SerProvList",listProvider);
@@ -99,8 +94,8 @@ public class SearchController {
 
 //      DELETE THE ACCOUNT
     @RequestMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable(name = "id") Long id) {
+    public RedirectView deleteProduct(@PathVariable(name = "id") Long id) {
         providerService.delete(id);
-        return "index";
+        return new RedirectView("/logout-process");
     }
 }

@@ -8,11 +8,6 @@
     <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
 <body>
-
-<div th:each="Provider : ${Providers}">
-    <div th:text="${Provider.firstName}">
-
-
         <ul th:each="Provider: ${Providers}">
             <img th:src = "${{Provider.imageURL}" />
             <p>Name</p><span th:text="${{Provider.firstName}"></span>
@@ -21,9 +16,7 @@
             <p>**********************************************************</p>
         </ul>
     <a href="/service-profile/{Provider.id}"></a><button type="button">View Profile</button></a>
-    </div>
 
-</div>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

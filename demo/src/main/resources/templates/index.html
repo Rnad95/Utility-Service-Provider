@@ -318,7 +318,7 @@
 <!--</html>-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -360,6 +360,17 @@
 <div sec:authorize="isAuthenticated()">
     <h1> you are in !</h1>
 
+    <form action="/addSubCategories" method="GET">
+        <button type="submit">Add Sub-categories</button>
+    </form>
+
+    <form action="/myProfile" method="GET">
+        <button type="submit">My Profile</button>
+    </form>
+
+    <form action="/allProviders" method="GET">
+        <button type="submit">All providers</button>
+    </form>
 
     <form action="/logout-process" method="GET">
         <button type="submit">Sign out</button>

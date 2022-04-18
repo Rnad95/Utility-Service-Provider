@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,9 +10,20 @@
 <body>
 
 <div th:each="Provider : ${Providers}">
-    <div th:text="${Provider.firstName}"></div>
-</div>
+    <div th:text="${Provider.firstName}">
 
+
+        <ul th:each="Provider: ${Providers}">
+            <img th:src = "${{Provider.imageURL}" />
+            <p>Name</p><span th:text="${{Provider.firstName}"></span>
+                       <span th:text="${{Provider.lastName}"></span>
+            <p>phone Number</p><span th:text="${{Provider.phoneNumber}"></span>
+            <p>**********************************************************</p>
+        </ul>
+    <a href="/service-profile/{Provider.id}"></a><button type="button">View Profile</button></a>
+    </div>
+
+</div>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

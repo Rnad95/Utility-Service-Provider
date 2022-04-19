@@ -48,13 +48,9 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
-<<<<<<< HEAD
-    //request relationship
-    @OneToMany
-=======
+
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "customer")
->>>>>>> a68b07fef98fc6bfc06a4b4c0ccd55958584ad69
     List<ServiceRequest> requestsList;
 
     @OnDelete(action = OnDeleteAction.CASCADE)

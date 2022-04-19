@@ -21,8 +21,8 @@ public class ServiceRequest {
     private Long id;
 
 //    @CreationTimestamp
-//    private Date date; //must be checked to be unique (manually)
-
+    private String date; //must be checked to be unique (manually)
+    private String time;
     private boolean doneRequest;
     private boolean accepted;
     private boolean reviewed;
@@ -47,13 +47,15 @@ public class ServiceRequest {
     }
 
 
-    public ServiceRequest(String details,String location) {
+    public ServiceRequest(String details,String location,String date , String time) {
 //        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
         this.reviewed=false;
         this.details=details;
         this.location=location;
+        this.date =date;
+        this.time=time;
 
     }
 

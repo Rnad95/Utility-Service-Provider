@@ -39,10 +39,21 @@ public class ReqResController {
 
     @PostMapping("/addRequest/{id}") //id in the route is the provider's id
     public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
-        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation());
-//        bring the provider
+        ServiceRequest newRequest = new ServiceRequest(request.getDetails(),request.getLocation(),request.getDate(),request.getTime());
+
+        //        bring the provider
         MyUser provider = myUserRepo.findById(id).orElseThrow();
         newRequest.setProvider(provider);
+
+        List <ServiceRequest> requests = requestRepository.findAllByProviderId(id);
+        for(int i=0 ;i<requests.size();i++){
+
+            if(requests.get(i).getDate()==request.getDate() && requests.get(i).getTime()==request.getTime()){
+                System.out.println("************************NOT AVAILABLE TIME*************************");
+            }
+        }
+
+
         //bring the customer
         MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newRequest.setCustomer(customer);

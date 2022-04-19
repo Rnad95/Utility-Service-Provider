@@ -82,24 +82,42 @@ public class SearchController {
         return "my-profile";
     }
 //************************************ Try to Edit The information ****************************
-    @RequestMapping("/edit/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) {
-        ModelAndView MAV = new ModelAndView("edit_profile");
-        UserDetails myUser = providerService.get(id);
-        MAV.addObject("myUser", myUser);
-        return MAV;
+
+    @GetMapping("/edit/{id}")
+    public String showEditProductPage(@PathVariable(name = "id") Long id,Model m) {
+        MyUser myUser = providerService.get(id);
+        m.addAttribute("myUser", myUser);
+        return "edit_profile";
+
     }
 
-//    @PostMapping("/save")
-//    public RedirectView saveProduct(@ModelAttribute("myUser") MyUser myUser) {
-//        myUserRepo.save(myUser);
-//        return new RedirectView("/myProfile");
-//    }
+    @PostMapping("/edit/{id}")
+    public RedirectView UpdateUser (@ModelAttribute MyUser UserUpdate ){
+        MyUser currentUser = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        currentUser.setFirstName(UserUpdate.getFirstName());
+        currentUser.setLastName(UserUpdate.getLastName());
+        currentUser.setImageURL(UserUpdate.getImageURL());
+        currentUser.setPhoneNumber(UserUpdate.getPhoneNumber());
+        currentUser.setEmail(UserUpdate.getEmail());
 
-//      DELETE THE ACCOUNT
+        System.out.println("******************************************************************"+currentUser);
+        System.out.println("**********************************UserUpdate********************************"+UserUpdate);
+        myUserRepo.save(currentUser);
+        return new RedirectView("/profile/{id}");
+    }
+
+    //      DELETE THE ACCOUNT
     @RequestMapping("/delete/{id}")
     public RedirectView deleteProduct(@PathVariable(name = "id") Long id) {
         providerService.delete(id);
         return new RedirectView("/logout-process");
     }
+
+    @PostMapping("/save/{id}")
+    public RedirectView createRequest(@PathVariable Long id , @ModelAttribute MyUser myUser ){
+        MyUser saveInfo = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        myUserRepo.save(saveInfo);
+        return new RedirectView("/myProfile");
+    }
+
 }

@@ -8,10 +8,12 @@
     <div>
         <div>
             <p th:text="${request.details}" class="details"></p>
-<!--            <p th:text="${request.date}"></p>-->
+            <p th:text="${request.date}" class="date"></p>
+            <p th:text="${request.time}" class="time"></p>
             <p th:text="${request.location}" class="location"></p>
         </div>
         <div>
+
             <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST">
             <button type="submit">
                 Reject

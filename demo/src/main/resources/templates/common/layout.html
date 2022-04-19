@@ -43,6 +43,9 @@
                                 <li sec:authorize="hasAuthority('SERVICEPROVIDER')" >
                                     <a class="dropdown-item" href="/sp-profile">My profile</a>
                                 </li>
+                                <li sec:authorize="hasAuthority('ADMIN')" >
+                                    <a class="dropdown-item" href="/admin">Dashboard</a>
+                                </li>
                                 <li><a class="dropdown-item" href="/logout-process">Logout</a></li>
                             </ul>
                         </div>

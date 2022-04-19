@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home">
+<header th:replace="common/layout :: header"></header>
+
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                <i class="fa fa-bars"></i>
+                <span class="sr-only">Toggle Menu</span>
+            </button>
+        </div>
+        <div class="p-4 pt-5">
+            <h1><a href="index.html" class="logo">Utility</a></h1>
+            <ul class="list-unstyled components mb-5">
+                <li >
+                    <a href="/admin">Dashboard</a>
+                </li>
+                <li class="active">
+                    <a href="/admin/create-category">Create Category</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <form class="create-category-form m-5" action="/admin/create-category" method="post">
+            <div class="form-group my-3">
+                <label for="category-title">Category title : </label>
+                <input type="text" class="form-control" id="category-title" name="category">
+            </div>
+            <div class="form-group my-3">
+                <label for="category">Set Parent:</label>
+                <select class="form-control" id="category" name="categoryParent">
+                    <option value="0">All</option>
+                    <div th:each="category : ${categories}">
+                        <option class="optionGroup"  th:text="${category.title}" th:value="${category.id}"></option>
+                        <option  class="optionChild" th:each="subCategory : ${category.children}"  th:text="'--' + ${subCategory.title}" th:value="${subCategory.id}"></option>
+                    </div>
+                </select>
+            </div>
+            <div class="form-group my-2 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

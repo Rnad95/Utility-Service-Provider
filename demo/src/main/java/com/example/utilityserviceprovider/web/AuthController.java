@@ -12,11 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,10 +39,6 @@ public class AuthController {
     public String getProfile(){
 
         return "profile";
-    }
-    @GetMapping("/admin")
-    public String getAdmin(){
-        return "admin";
     }
 
 
@@ -86,7 +80,7 @@ public class AuthController {
 //        categoryRepo.save(categoryh);
 
 
-        return "customer-signup";
+        return "customer/customer-signup";
     }
 
 
@@ -109,7 +103,7 @@ public class AuthController {
 //*****************************
     @GetMapping("/service-profile")
     public String getService(){
-    return "service-profile";
+    return "service-provider/service-profile";
 }
 
     @GetMapping("/service-signup")
@@ -117,14 +111,14 @@ public class AuthController {
         List<Category> categories = categoryRepo.findAll();
         categories =  categories.stream().filter(index -> index.getParent() == null).collect(Collectors.toList());
         model.addAttribute("categories",categories);
-        return "service-signup";
+        return "service-provider/service-signup";
     }
     @PostMapping("/service-signup")
 
     public String postSignupProvider(@ModelAttribute MyUser myUser ){
         if(myUserRepo.findByUsername(myUser.getUsername())!=null)
         {
-            return "service-signup.html";
+            return "service-provider/service-signup.html";
             //we should raise an error
         }
 
@@ -142,7 +136,7 @@ public class AuthController {
 public String getCategoryList(@PathVariable(name= "name") String name , Model model){
         List<MyUser> categoryProviders = categoryRepo.findCategoriesByTitle(name).getUsersList();
         model.addAttribute("Providers" , categoryProviders);
-        return "providerList";
+        return "service-provider/providerList";
 }
 
 
@@ -153,16 +147,48 @@ public String getCategoryList(@PathVariable(name= "name") String name , Model mo
     }
 
 
-    //--------------------------------------------------customer profile
+    //--------------------------------------------------    Customer profile
     @GetMapping("/customer-profile/{id}")   // need the root name from hamzeh
     public String getCustomerProfile(Model model , @PathVariable long id ) {
         MyUser user = new MyUser();
         user = myUserRepo.findById(id).orElseThrow();
         model.addAttribute("user", user);
 
-        return "profile";
+        return "customer/profile";
     }
-//******************************
+//******************************    Admin
+@GetMapping("/admin")
+public String getAdmin(){
+    return "admin/admin.html";
+}
+
+    @GetMapping("/admin/create-category")
+    public String getCreateCategory(Model model){
+        List<Category> categories = categoryRepo.findAll();
+        categories =  categories.stream().filter(index -> index.getParent() == null).collect(Collectors.toList());
+        model.addAttribute("categories",categories);
+        return "admin/create-category.html";
+    }
+    @PostMapping("/admin/create-category")
+    public RedirectView createCategory(@RequestParam String category , @RequestParam Long categoryParent){
+        if (categoryParent != 0 ){
+            Category parentCategory = categoryRepo.findById(categoryParent).orElseThrow();
+            Category category1 = new Category(category);
+            category1.setParent(parentCategory);
+            List<Category> list1 = new ArrayList<>();
+            list1.add(category1);
+            parentCategory.setChildren(list1);
+            categoryRepo.save(category1);
+            categoryRepo.save(parentCategory);
+        }else{
+            Category category1 = new Category(category);
+            categoryRepo.save(category1);
+        }
+
+        return new RedirectView("/admin/create-category");
+    }
+
+
 
 
 

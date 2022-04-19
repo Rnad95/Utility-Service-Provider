@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home">
+<header th:replace="common/layout :: header"></header>
+<div th:align="center" padding="2px">
+
+    <form th:action="@{/allProviders}" method="get">
+        <input type="text" name="keyword" required/>
+        <input type="submit" value="Search"/>
+    </form>
+    <h6>Service Provider List</h6>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Profile Pic</th>
+            <th>Username</th>
+            <th>Name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <!--    Rendering the Service Provider  -->
+        <tr th:each="provider:${SerProvList}">
+            <td th:text="${provider.id}">id</td>
+            <td><a th:href="'/profile/'+${provider.id}">
+                <img th:src="${provider.getImageURL()}" alt="profile pic" style="width:200px;height:200px;">
+            </a></td>
+            <td th:text="${provider.username}">username</td>
+            <td>
+                <span th:text="${provider.firstName}"></span> &nbsp; <span th:text="${provider.lastName}"></span>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="common/layout :: footer"></footer>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

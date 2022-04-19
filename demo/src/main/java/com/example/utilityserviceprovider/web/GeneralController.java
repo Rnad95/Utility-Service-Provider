@@ -33,6 +33,9 @@ public class GeneralController {
    @Autowired
    CategoryRepo categoryRepo;
 
+   @Autowired
+   MyUserRepo myUserRepo;
+
     @GetMapping("/")
     public String getHomePage(Model model){
         List<Category> categories = categoryRepo.findAll();
@@ -40,11 +43,11 @@ public class GeneralController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            model.addAttribute("username" , userDetails.getUsername());
+            UserDetails myUser = myUserRepo.findByUsername(userDetails.getUsername());
+            model.addAttribute("username" , myUser.getUsername());
+
         }
         model.addAttribute("categories",categories);
         return "index.html";
     }
-
-
 }

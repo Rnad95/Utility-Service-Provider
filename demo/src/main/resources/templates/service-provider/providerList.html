@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,10 +9,52 @@
 </head>
 <body>
 
-<div th:each="Provider : ${Providers}">
-    <div th:text="${Provider.firstName}"></div>
+<header th:replace="common/layout :: header"></header>
+
+<div class="container mt-3 mb-4 ">
+    <div class="col-lg-9 mt-4 mt-lg-0">
+        <div class="row">
+            <div class="col-md-12 p-3">
+                <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+                    <table class="table manage-candidates-top mb-0 text-center">
+                        <thead>
+                        <tr>
+                            <th>Provider Name</th>
+                            <th class="action text-center" sec:authorize="hasAuthority('CUSTOMER')">Request</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="candidates-list" th:each="user: ${Providers}">
+                            <td class="title">
+                                <div class="thumb">
+                                    <a> <img th:src="${user.imageURL}" class="rounded-circle" style="width: 150px;" alt="Avatar" /></a>
+                                </div>
+                                <br>
+                                <div class="candidate-list-details">
+                                    <div class="candidate-list-info">
+                                        <div class="candidate-list-title">
+                                            <h5 class="mb-0"><span th:text="${user.username}"></span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center d-flex justify-content-center align-items-end" sec:authorize="hasAuthority('CUSTOMER')" >
+
+                                   <a class="nav-link-signup" th:href="@{'/profile/' + ${user.id}}">Request</a>
+
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<footer th:replace="common/layout :: footer"> </footer>
 
 <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
+

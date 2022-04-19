@@ -1,6 +1,8 @@
 package com.example.utilityserviceprovider.domain;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,11 +49,17 @@ public class MyUser<set> implements UserDetails {
     private Role role;
 
 
-    @OneToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "customer")
     List<ServiceRequest> requestsList;
 
-    @OneToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "provider")
     List<ServiceRequest> responsesList;
+
+    //review relationship
+    @OneToMany(mappedBy = "provider")
+    List<Review> reviewsList;
 
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
@@ -71,6 +79,11 @@ public class MyUser<set> implements UserDetails {
 
     public void addRequest(ServiceRequest request){
         requestsList.add(request);
+    }
+
+    public void addReview(String content, double stars){
+        Review newReview = new Review(content , stars);
+        reviewsList.add(newReview);
     }
 
     public void addResponse(ServiceRequest response){

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home">
+<header th:replace="common/layout :: header"></header>
+<br>
+<div align="center">
+  <h1>Edit Profile</h1>
+  <br />
+  <form th:action="@{/edit/{id}(id=${myUser.id})}" method="post"  th:object="${myUser}">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>
+          <h5 th:text="${myUser.username}"></h5>
+        </td>
+      </tr>
+      <tr>
+        <td>First Name:</td>
+        <td>
+          <input type="text" th:placeholder="${myUser.firstName}" th:field="${myUser.firstName}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" th:field="${myUser.lastName}" /></td>
+      </tr>
+      <tr>
+        <td>Image</td>
+        <td><input type="text" th:field="${myUser.imageURL}" /></td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td><input type="text" th:field="${myUser.phoneNumber}" /></td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><input type="text" th:field="${myUser.email}" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<footer th:replace="common/layout :: footer"></footer>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

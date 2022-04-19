@@ -35,52 +35,59 @@ public class AuthController {
     public String getLoginPage(){
         return "login";
     }
-    @GetMapping("/profile")
+    @GetMapping("/customer-profile")
     public String getProfile(){
-
-        return "profile";
+        return "customer/profile";
     }
 
+
+    @GetMapping ("/addSubCategories")
+    public RedirectView makeSubCategories(){
+
+        Category categorya = new Category("Body");
+        Category categoryb = new Category("Engine");
+        Category categoryc = new Category("ABS System");
+        Category categorye = new Category("Airbag");
+        Category categoryf = new Category("Electrical system");
+        Category categoryj = new Category("Hybrid");
+        Category categoryh = new Category("Classic");
+        Category categorym = categoryRepo.findCategoriesByTitle("Car");
+        categorya.setParent(categorym);
+        categoryb.setParent(categorym);
+        categoryc.setParent(categorym);
+        categorye.setParent(categorym);
+        categoryf.setParent(categorym);
+        categoryj.setParent(categorym);
+        categoryh.setParent(categorym);
+        List<Category> list1 = new ArrayList<>();
+        list1.add(categorya);
+        list1.add(categoryb);
+        list1.add(categoryc);
+        list1.add(categorye);
+        list1.add(categoryf);
+        list1.add(categoryj);
+        list1.add(categoryh);
+        categorym.setChildren(list1);
+        categoryRepo.save(categorym);
+        categoryRepo.save(categorya);
+        categoryRepo.save(categoryb);
+        categoryRepo.save(categoryc);
+        categoryRepo.save(categorye);
+        categoryRepo.save(categoryf);
+        categoryRepo.save(categoryj);
+        categoryRepo.save(categoryh);
+
+
+        return new RedirectView("/");
+    }
 
 
 
     @GetMapping("/customer-signup")
     public String getSignupPage(){
-//        Category categorya = new Category("Body");
-//        Category categoryb = new Category("Engine");
-//        Category categoryc = new Category("ABS System");
-//        Category categorye = new Category("Airbag");
-//        Category categoryf = new Category("Electrical system");
-//        Category categoryj = new Category("Hybrid");
-//        Category categoryh = new Category("Classic");
-//        Category categorym = categoryRepo.findCategoriesByTitle("Car");
-//        categorya.setParent(categorym);
-//        categoryb.setParent(categorym);
-//        categoryc.setParent(categorym);
-//        categorye.setParent(categorym);
-//        categoryf.setParent(categorym);
-//        categoryj.setParent(categorym);
-//        categoryh.setParent(categorym);
-//        List<Category> list1 = new ArrayList<>();
-//        list1.add(categorya);
-//        list1.add(categoryb);
-//        list1.add(categoryc);
-//        list1.add(categorye);
-//        list1.add(categoryf);
-//        list1.add(categoryj);
-//        list1.add(categoryh);
-//        categorym.setChildren(list1);
-//        categoryRepo.save(categorym);
-//        categoryRepo.save(categorya);
-//        categoryRepo.save(categoryb);
-//        categoryRepo.save(categoryc);
-//        categoryRepo.save(categorye);
-//        categoryRepo.save(categoryf);
-//        categoryRepo.save(categoryj);
-//        categoryRepo.save(categoryh);
-
 
         return "customer/customer-signup";
+
     }
 
 
@@ -101,10 +108,6 @@ public class AuthController {
 
 
 //*****************************
-    @GetMapping("/service-profile")
-    public String getService(){
-    return "service-provider/service-profile";
-}
 
     @GetMapping("/service-signup")
     public String getProviderSignupPage(Model model){

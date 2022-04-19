@@ -25,6 +25,7 @@ public class ServiceRequest {
 
     private boolean doneRequest;
     private boolean accepted;
+    private boolean reviewed;
 
     private String details;
     private String location;
@@ -50,8 +51,10 @@ public class ServiceRequest {
 //        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
+        this.reviewed=false;
         this.details=details;
         this.location=location;
+
     }
 
     public boolean isDoneRequest() {
@@ -59,12 +62,12 @@ public class ServiceRequest {
     }
 
 
-
     @Override
     public String toString() {
         return "ServiceRequest{" +
                 "doneRequest=" + doneRequest +
                 ", accepted=" + accepted +
+                ", reviewed=" + reviewed +
                 ", details='" + details + '\'' +
                 ", location='" + location + '\'' +
                 ", provider=" + provider +

@@ -1,10 +1,12 @@
 package com.example.utilityserviceprovider.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+@Getter
+@Setter
 @Entity
 public class Review {
 
@@ -17,6 +19,8 @@ public class Review {
     private Long id;
     private String content;
     private double stars;
+    private double sumOfStars;
+    private double numberOfStars;
 
     /**
      * @Create two Constructors: default Constructor and Constructor passing content and stars
@@ -27,24 +31,25 @@ public class Review {
     }
     public Review(String content, double stars) {
         this.content = content;
-        this.stars = stars;
         CheckStar(stars);
+        this.stars = calculate(stars);
     }
 
-    /**
-     *
-     * @Getter and
-     */
+    private double calculate (double stars){
+        this.sumOfStars+=stars;
+        this.numberOfStars++;
+        this.stars=sumOfStars/numberOfStars;
+        return this.stars;
+    }
 
-    public Long getId() {
-        return id;
-    }
-    public String getContent() {
-        return content;
-    }
-    public double getStars() {
-        return stars;
-    }
+    //relationships
+
+    @ManyToOne
+    MyUser provider;
+
+
+
+
 
     /**
      * Check the stars

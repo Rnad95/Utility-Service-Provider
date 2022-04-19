@@ -46,12 +46,16 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
-
+    //request relationship
     @OneToMany
     List<ServiceRequest> requestsList;
 
     @OneToMany
     List<ServiceRequest> responsesList;
+
+    //review relationship
+    @OneToMany(mappedBy = "provider")
+    List<Review> reviewsList;
 
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
@@ -71,6 +75,11 @@ public class MyUser<set> implements UserDetails {
 
     public void addRequest(ServiceRequest request){
         requestsList.add(request);
+    }
+
+    public void addReview(String content, double stars){
+        Review newReview = new Review(content , stars);
+        reviewsList.add(newReview);
     }
 
     public void addResponse(ServiceRequest response){

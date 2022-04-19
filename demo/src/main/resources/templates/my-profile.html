@@ -12,27 +12,27 @@
     <h1>My profile</h1>
     <div class="">
         <img th:src="${userAcc.imageURL}" alt="Image" style="width:200px">
-        <!--        <h3>Service provider Name</h3>-->
+        <!--        <h3>Service provider Information</h3>-->
         <h3 th:text="${userAcc.firstName}+' '+${userAcc.lastName}"></h3>
-        <h5 th:text="${userAcc}"></h5>
+<!--        <h5 th:text="${userAcc}"></h5>-->
+        <h5 th:text="${userAcc.phoneNumber}"></h5>
+        <h5 th:text="${userAcc.email}"></h5>
 
         <!--        <p class="">Username</p>-->
         <p th:text="${userAcc.username}"></p>
         <div>
             <!--    Rendering the Calender -->
-            <p> Here we will be Appointment </p>
-            <button type="submit">Book appointment</button>
-
+<!--            <p> Here we will be Appointment </p>-->
             <a th:href="'/requests/'+${userAcc.id}">
                 <button type="submit">Check Requests</button>
             </a>
 
         </div>
         <!--                 Adding Rate stars     -->
-        <div>
-            <a href=""><button>Contact</button></a>
-            <a href=""><button>Phone</button></a>
-        </div>
+<!--        <div>-->
+<!--            <a href=""><button>Contact</button></a>-->
+<!--            <a href=""><button>Phone</button></a>-->
+<!--        </div>-->
 
         <section th:fragment="myProfile" class="myProfile">
 

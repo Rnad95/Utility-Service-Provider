@@ -51,11 +51,14 @@ public class SearchController {
         return "render-sp";
     }
 
-    public String getRequestForm (Model model ,@PathVariable Long id){
-        MyUser provider = myUserRepo.findById(id).orElseThrow();
-        model.addAttribute("provider", provider);
-        return "request.html";
-    }
+
+//
+//    public String getRequestForm (Model model ,@PathVariable Long id){
+//        MyUser provider = myUserRepo.findById(id).orElseThrow();
+//        model.addAttribute("provider", provider);
+//        return "request.html";
+//    }
+
     @GetMapping("/profile/{id}")
     public String getHome(Principal p , Model m, @PathVariable Long id){
         if(p!=null){

@@ -1,6 +1,8 @@
 package com.example.utilityserviceprovider.domain;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,11 +48,12 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
-
-    @OneToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "customer")
     List<ServiceRequest> requestsList;
 
-    @OneToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "provider")
     List<ServiceRequest> responsesList;
 
 

@@ -32,6 +32,7 @@ public class ProviderService {
     }
 
     public void delete(long id) {
+        MyUser myUser =myUserRepo.getById(id);
         myUserRepo.deleteById(id);
     }
 

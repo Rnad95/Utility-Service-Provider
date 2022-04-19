@@ -17,15 +17,37 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item mx-3">
-                            <a class="nav-link-login" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link-signup" href="/signup">SignUp</a>
-                        </li>
-                    </ul>
+                <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+                    <div sec:authorize="isAnonymous()" class="ms-auto">
+                        <ul class="navbar-nav  mb-2 mb-lg-0">
+                            <li class="nav-item mx-3">
+                                <a class="nav-link-login" href="/login">Login</a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link-signup" href="/signup">SignUp</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div sec:authorize="isAuthenticated()" class="ms-auto">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle d-flex justify-content-center align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://www.htcestore.com/media/catalog/product/cache/ccb47da442ebb206d74aa361802c6e2c/p/r/profile.png" class="rounded-circle mr-2" style="width: 35px;" alt="Avatar" />
+                                <div class="media-body mx-2">
+                                    <span th:text="${username}"></span>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li sec:authorize="hasAuthority('CUSTOMER')" >
+                                    <a class="dropdown-item" href="/customer-profile">My profile</a>
+                                </li>
+                                <li sec:authorize="hasAuthority('SERVICEPROVIDER')" >
+                                    <a class="dropdown-item" href="/sp-profile">My profile</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/logout-process">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -156,6 +178,7 @@
         <!-- Copyright -->
     </footer>
 
-    <script rel="stylesheet" th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -21,10 +21,11 @@ public class ServiceRequest {
     private Long id;
 
 //    @CreationTimestamp
-//    private Date date; //must be checked to be unique (manually)
-
+    private String date; //must be checked to be unique (manually)
+    private String time;
     private boolean doneRequest;
     private boolean accepted;
+    private boolean reviewed;
 
     private String details;
     private String location;
@@ -46,12 +47,16 @@ public class ServiceRequest {
     }
 
 
-    public ServiceRequest(String details,String location) {
+    public ServiceRequest(String details,String location,String date , String time) {
 //        this.date = date;
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
+        this.reviewed=false;
         this.details=details;
         this.location=location;
+        this.date =date;
+        this.time=time;
+
     }
 
     public boolean isDoneRequest() {
@@ -59,12 +64,12 @@ public class ServiceRequest {
     }
 
 
-
     @Override
     public String toString() {
         return "ServiceRequest{" +
                 "doneRequest=" + doneRequest +
                 ", accepted=" + accepted +
+                ", reviewed=" + reviewed +
                 ", details='" + details + '\'' +
                 ", location='" + location + '\'' +
                 ", provider=" + provider +

@@ -42,16 +42,10 @@ public class AuthController {
 
         return "profile";
     }
-    @GetMapping("/admin")
-    public String getAdmin(){
-        return "admin";
-    }
 
+    @GetMapping ("/addSubCategories")
+    public RedirectView makeSubCategories(){
 
-
-
-    @GetMapping("/customer-signup")
-    public String getSignupPage(){
         Category categorya = new Category("Body");
         Category categoryb = new Category("Engine");
         Category categoryc = new Category("ABS System");
@@ -84,6 +78,50 @@ public class AuthController {
         categoryRepo.save(categoryf);
         categoryRepo.save(categoryj);
         categoryRepo.save(categoryh);
+
+
+        return new RedirectView("/");
+    }
+
+    @GetMapping("/admin")
+    public String getAdmin(){
+        return "admin";
+    }
+
+    @GetMapping("/customer-signup")
+    public String getSignupPage(){
+//        Category categorya = new Category("Body");
+//        Category categoryb = new Category("Engine");
+//        Category categoryc = new Category("ABS System");
+//        Category categorye = new Category("Airbag");
+//        Category categoryf = new Category("Electrical system");
+//        Category categoryj = new Category("Hybrid");
+//        Category categoryh = new Category("Classic");
+//        Category categorym = categoryRepo.findCategoriesByTitle("Car");
+//        categorya.setParent(categorym);
+//        categoryb.setParent(categorym);
+//        categoryc.setParent(categorym);
+//        categorye.setParent(categorym);
+//        categoryf.setParent(categorym);
+//        categoryj.setParent(categorym);
+//        categoryh.setParent(categorym);
+//        List<Category> list1 = new ArrayList<>();
+//        list1.add(categorya);
+//        list1.add(categoryb);
+//        list1.add(categoryc);
+//        list1.add(categorye);
+//        list1.add(categoryf);
+//        list1.add(categoryj);
+//        list1.add(categoryh);
+//        categorym.setChildren(list1);
+//        categoryRepo.save(categorym);
+//        categoryRepo.save(categorya);
+//        categoryRepo.save(categoryb);
+//        categoryRepo.save(categoryc);
+//        categoryRepo.save(categorye);
+//        categoryRepo.save(categoryf);
+//        categoryRepo.save(categoryj);
+//        categoryRepo.save(categoryh);
 
         return "customer-signup";
     }

@@ -2,6 +2,7 @@ package com.example.utilityserviceprovider;
 
 
 import com.example.utilityserviceprovider.domain.Category;
+import com.example.utilityserviceprovider.domain.MyUser;
 import com.example.utilityserviceprovider.domain.Role;
 import com.example.utilityserviceprovider.infrastructure.CategoryRepo;
 import com.example.utilityserviceprovider.infrastructure.RoleRepo;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 public class UtilityServiceProviderApplication {
     private static final Logger log = LoggerFactory.getLogger(UtilityServiceProviderApplication.class);
     public static void main(String[] args) {
+
         SpringApplication.run(UtilityServiceProviderApplication.class, args);
     }
 
@@ -30,6 +32,7 @@ public class UtilityServiceProviderApplication {
             log.info("Preloading " + categoryRepo.save(new Category("Maintenance")));
             log.info("Preloading " + categoryRepo.save(new Category("Car")));
             log.info("Preloading " + categoryRepo.save(new Category("Electric")));
+            // we can make provider and customer accounts for testing
         };
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+</head>
+<body>
+<form th:action="'/addReview/'+${provider.id}" method="POST">
+
+    <h3 th:text="${provider.firstName}+' '+${provider.lastName}"></h3>
+    <h3 th:text="${provider.rate}"></h3>
+
+    <label for="content">Share us your experience </label>
+    <input id="content" type="text" name="content">
+
+    <label for="stars">Rate your experience </label>
+    <input id="stars" type="number" name="stars">
+
+    <button type="submit">Add Review</button>
+</form>
+
+<div>
+    <div th:each="review :${reviews}">
+        <p th:text="${review.content}"></p>
+        <p th:text="${review.stars}"></p>
+    </div>
+</div>
+
+</body>
+</html>

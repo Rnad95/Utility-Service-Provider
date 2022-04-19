@@ -16,6 +16,7 @@ public interface MyUserRepo extends JpaRepository <MyUser, Long> {
 
     //    Adding them to the search operation
     @Query("select serviceUser from MyUser serviceUser where serviceUser.firstName like %?1%"
+            +"or serviceUser.category.title like %?1%"
             +"or serviceUser.lastName like %?1%"
             +"or serviceUser.category.title like %?1%"
             +"or serviceUser.username like %?1%")

@@ -25,7 +25,7 @@
         </div>
 
         <p th:text="${user.username}"></p>
-
+        <p th:text="${user.rate}"></p>
 
         <div th:if="${user.role.id} == 3">
             <p>The service provider should check the appointments</p>
@@ -33,10 +33,18 @@
         </div>
 
         <div th:if="${user.role.id} == 2">
-            <p>THis is custome rshould see book</p>
+            <p>This is customer should see book</p>
             <button type="submit">view my Request appointment</button>
         </div>
         <br>
+        <!--        render provider's reviews        -->
+
+        <div>
+            <div th:each="review :${reviews}">
+                <p th:text="${review.content}"></p>
+                <p th:text="${review.stars}"></p>
+            </div>
+        </div>
         <!--        For All users edit and delete-->
         <p th:align="center">***************************************************</p>
         <form th:action="'/edit/'+${user.id}">

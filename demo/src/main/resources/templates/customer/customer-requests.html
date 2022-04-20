@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>My Requests</title>
+</head>
+<body>
+<tr th:each="request:${requests}">
+
+    <td th:text="${request.details}"></td>
+    <td>
+        <span th:if="${request.isDoneRequest()}">
+        <span th:if="${request.accepted}">
+            <form th:action="@{/addReview/{id}(id=${request.giveMeProviderId()})}" method="POST">
+                <button type="submit">Add Review</button>
+            </form>
+        </span>
+        </span>
+    </td>
+        <td>
+        <span th:if="${request.isDoneRequest()}">
+        <span th:if="!${request.accepted}">
+            <p>Rejected</p>
+        </span>
+        </span>
+    </td>
+        <td>
+        <span th:if="!${request.isDoneRequest()}">
+        <span th:if="${request.accepted}">
+            <p>Accepted</p>
+        </span>
+        </span>
+    </td>
+        <td>
+        <span th:if="!${request.isDoneRequest()}">
+            <span th:if="!${request.accepted}">
+                <p>Pending..</p>
+            </span>
+        </span>
+    </td>
+
+</tr>
+
+</body>
+</html>

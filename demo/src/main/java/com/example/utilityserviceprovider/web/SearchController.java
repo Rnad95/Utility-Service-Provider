@@ -1,7 +1,9 @@
 package com.example.utilityserviceprovider.web;
 
 import com.example.utilityserviceprovider.domain.MyUser;
+import com.example.utilityserviceprovider.domain.Review;
 import com.example.utilityserviceprovider.infrastructure.MyUserRepo;
+import com.example.utilityserviceprovider.infrastructure.ReviewRepository;
 import com.example.utilityserviceprovider.infrastructure.RoleRepo;
 import com.example.utilityserviceprovider.services.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class SearchController {
     MyUserRepo myUserRepo;
     @Autowired
     RoleRepo roleRepo;
+    @Autowired
+    ReviewRepository reviewRepository;
 
 //    @RequestMapping("/search")
 //    public String viewHomePage(Model model, @Param("keyword") String keyword) {
@@ -70,8 +74,11 @@ public class SearchController {
 
     @GetMapping("/service-profile")
     public String myProfile(Principal p , Model m){
+
         if(p!=null){
-            UserDetails myUser= myUserRepo.findByUsername(p.getName());
+            MyUser myUser= myUserRepo.findByUsername(p.getName());
+            List<Review> reviews = reviewRepository.findAllByProvider(myUser);
+            m.addAttribute("reviews",reviews);
             m.addAttribute("user",myUser);
             return "service-provider/my-profile";
         }

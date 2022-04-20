@@ -19,8 +19,6 @@ public class Review {
     private Long id;
     private String content;
     private double stars;
-    private double sumOfStars;
-    private double numberOfStars;
 
     /**
      * @Create two Constructors: default Constructor and Constructor passing content and stars
@@ -31,35 +29,34 @@ public class Review {
     }
     public Review(String content, double stars) {
         this.content = content;
-        CheckStar(stars);
-        this.stars = calculate(stars);
+        checkStar(stars);
     }
 
-    private double calculate (double stars){
-        this.sumOfStars+=stars;
-        this.numberOfStars++;
-        this.stars=sumOfStars/numberOfStars;
-        return this.stars;
+    private void calculate (double stars){
+        provider.setSumOfStars(provider.getSumOfStars()+stars);
+        provider.setNumberOfStars(provider.getNumberOfStars()+1);
+        provider.setRate(provider.getSumOfStars()/provider.getNumberOfStars());
+    }
+    public void setProvider (MyUser provider){
+        this.provider=provider;
+        calculate(stars);
     }
 
     //relationships
-
     @ManyToOne
     MyUser provider;
-
-
-
-
-
     /**
      * Check the stars
      * @param stars
      */
-    public void CheckStar(double stars) {
+    public void checkStar(double stars) {
         if (stars > 0 && stars <= 5) {
             this.stars = stars;
         }else{
-            throw new IllegalArgumentException();
+            if(stars>5)
+                this.stars=5;
+            if(stars<0)
+                this.stars=0;
         }
     }
 

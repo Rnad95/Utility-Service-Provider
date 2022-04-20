@@ -26,6 +26,12 @@ public class ReqResController {
     @Autowired
     ServiceRequestRepository requestRepository;
 
+    @GetMapping("/my-requests/{id}")
+    public String getCustomerRequests(@PathVariable Long id ,Model model){
+        List <ServiceRequest> requests = requestRepository.findAllByCustomerId(id);
+        model.addAttribute("requests",requests);
+        return "customer/customer-requests";
+    }
 
     @GetMapping("/addRequest/{id}") //id in the route is the provider's id
     public String getRequestForm (Model model ,@PathVariable Long id){
@@ -34,8 +40,6 @@ public class ReqResController {
         return "request.html";
     }
 
-
-    // Resolve conflict
 
     @PostMapping("/addRequest/{id}") //id in the route is the provider's id
     public RedirectView createRequest(@PathVariable Long id , @ModelAttribute ServiceRequest request ){
@@ -52,19 +56,11 @@ public class ReqResController {
                 System.out.println("************************NOT AVAILABLE TIME*************************");
             }
         }
-
-
         //bring the customer
         MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newRequest.setCustomer(customer);
         //save the request
         requestRepository.save(newRequest);
-        System.out.println("************************going to the home*********************************"+request.toString());
-
-        //add the request to lists
-//        customer.addRequest(request);
-//        provider.addRequest(request);
-
 
         return new RedirectView("/profile/{id}"); //must be changed to redirect us to the provider's page
     }
@@ -73,7 +69,6 @@ public class ReqResController {
     @GetMapping("/request/{id}") // id = request id
     public String getRequest(@PathVariable Long id,Model model){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
-        System.out.println("*********************************************************"+request.toString());
         model.addAttribute("request",request);
 
         return "response.html";
@@ -83,9 +78,8 @@ public class ReqResController {
     public RedirectView acceptRequest (@PathVariable Long id){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
         request.setAccepted(true);
-        System.out.println("*************************accept********************************"+request.toString());
         requestRepository.save(request);
-        return new RedirectView("/requests/{id}"); //returning to the provider's page /profile/{id}
+        return new RedirectView("/requests/{id}"); //returning to the provider's requests page
     }
     @PostMapping("/reject-request/{id}") //id is the id of the request
     public RedirectView rejectRequest (@PathVariable Long id){
@@ -94,15 +88,14 @@ public class ReqResController {
         request.setDoneRequest(true);
         requestRepository.save(request);
 
-        System.out.println("*************************reject********************************"+request.toString());
-
-        return new RedirectView("/requests/{id}"); //returning to the provider's page /profile/{id}
+        return new RedirectView("/requests/{id}"); //returning to the provider's requests page
     }
 
     @PostMapping("/done-request/{id}")//id is the id of the request
     public RedirectView doneRequest (@PathVariable Long id){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
         request.setDoneRequest(true);
+        requestRepository.save(request);
         return new RedirectView("/requests/{id}");
     }
     //--------------------------------------------------------------------------------
@@ -111,7 +104,7 @@ public class ReqResController {
         MyUser provider=myUserRepo.findById(id).orElseThrow();
         List<ServiceRequest> requests = requestRepository.findAllByProviderId(id);
         model.addAttribute("requests",requests);
-        return "provider-requests.html";
+        return "service-provider/provider-requests.html";
         }
 
 

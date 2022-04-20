@@ -8,6 +8,7 @@ import com.example.utilityserviceprovider.infrastructure.CategoryRepo;
 import com.example.utilityserviceprovider.infrastructure.MyUserRepo;
 import com.example.utilityserviceprovider.infrastructure.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,9 @@ public class AuthController {
         return "login";
     }
     @GetMapping("/customer-profile")
-    public String getProfile(){
+    public String getProfile(Model model){
+        MyUser user = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user",user);
         return "customer/profile";
     }
 

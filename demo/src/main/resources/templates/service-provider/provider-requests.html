@@ -8,7 +8,7 @@
 <tr th:each="request:${requests}">
     <td th:text="${request.details}"></td>
     <td>
-        <a th:href="'/request/'+${request.id}">Manage Request</a>
+        <a th:href="'/request/'+${request.id}">Manage Request</a> <br>
     </td>
 </tr>
 

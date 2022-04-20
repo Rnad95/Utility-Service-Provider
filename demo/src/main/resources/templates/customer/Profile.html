@@ -24,7 +24,9 @@
 <!--<p th:text = "${user.phoneNumber}"></p>-->
 <!--<p th:text = "${user.email}"></p>-->
 
-
+    <form th:action="@{/my-requests/{id}(id=${user.id})}" method="GET">
+        <button type="submit">My Requests</button>
+    </form>
 
 </body>
 </html>

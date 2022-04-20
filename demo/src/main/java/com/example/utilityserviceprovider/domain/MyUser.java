@@ -37,6 +37,10 @@ public class MyUser<set> implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
+    private double rate;
+    private double sumOfStars;
+    private double numberOfStars;
+
 
     //relationship with category
     @ManyToOne
@@ -58,6 +62,7 @@ public class MyUser<set> implements UserDetails {
     List<ServiceRequest> responsesList;
 
     //review relationship
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "provider")
     List<Review> reviewsList;
 
@@ -70,6 +75,10 @@ public class MyUser<set> implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
+
+        this.rate=0;
+        this.numberOfStars=0;
+        this.sumOfStars=0;
 
     }
 

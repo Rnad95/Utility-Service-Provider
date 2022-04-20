@@ -5,35 +5,46 @@
     <title>Response</title>
 </head>
 <body>
+<div>
     <div>
-        <div>
-            <p th:text="${request.details}" class="details"></p>
-            <p th:text="${request.date}" class="date"></p>
-            <p th:text="${request.time}" class="time"></p>
-            <p th:text="${request.location}" class="location"></p>
-        </div>
-        <div>
-
-            <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST">
-            <button type="submit">
-                Reject
-            </button>
-            </form>
-            <form th:action="@{/accept-request/{id}(id=${request.id})}" method="POST">
-            <button type="submit">
-                Accept
-            </button>
-            </form>
-
-            <form th:action="@{/done-request/{id}(id=${request.id})}" method="POST">
-            <button type="submit">
-                Done
-            </button>
-            </form>
-
-<!--            <a th:href="@{/reject-request/{id}(id=${request.id})}" method="POST">Reject</a>-->
-<!--            <a th:href="@{/accept-request/{id}(id=${request.id})}" method="POST">Accept</a>-->
-        </div>
+        <p th:text="${request.details}" class="details"></p>
+        <p th:text="${request.date}" class="date"></p>
+        <p th:text="${request.time}" class="time"></p>
+        <p th:text="${request.location}" class="location"></p>
     </div>
+    <div>
+             <span th:if="!${request.accepted} and !${request.isDoneRequest()}">
+                 <p>good job</p>
+                 <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST">
+                     <button type="submit">
+                         Reject
+                     </button>
+                 </form>
+
+                 <form th:action="@{/accept-request/{id}(id=${request.id})}" method="POST">
+                     <button type="submit">
+                         Accept
+                     </button>
+                 </form>
+             </span>
+
+        <span th:if="!${request.accepted} and ${request.isDoneRequest()}">
+            <p>Rejected Request</p>
+        </span>
+
+        <span th:if="${request.accepted} and !${request.isDoneRequest()}">
+            <form th:action="@{/done-request/{id}(id=${request.id})}" method="POST">
+                <button type="submit">
+                    Done
+                </button>
+            </form>
+        </span>
+
+        <span th:if="${request.accepted} and ${request.isDoneRequest()}">
+            <p> Done Request</p>
+        </span>
+
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home">
+<header th:replace="common/layout :: header"></header>
+
+
+
+<main class = "main">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="banner">
+                <img th:src="@{/assets/images/banner.png}" alt="banner" >
+            </div>
+        </div>
+
+        <h4>Main Category</h4>
+        <div class="d-flex flex-wrap flex-row">
+            <div th:each="category : ${categories}">
+                <div class = "card">
+                    <h4><a th:href="@{'/category/' + ${category.title}}" th:text="${category.title}"></a></h4>
+                    <nav class="container d-flex align-items-center flex-wrap">
+                        <div th:each="subCategory : ${category.children}" class="mx-4">
+                            <a th:href="@{'/category/' + ${subCategory.title}}" th:text="${subCategory.title}"></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+<script th:src="@{/js/jquery.slim.min.js}"></script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

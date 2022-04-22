@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "proider-req">
+<header th:replace="common/layout :: header"></header>
+
+
+<main class = "main">
+    <div class="container">
+        <div class="my-3">
+            <div class="card my-3" th:each="request:${requests}">
+                <div class="card-header"  th:text="${request.date}"></div>
+                <div class="card-body" >
+                    <h5 class="card-title" th:text="${request.details}"></h5>
+                    <p class="card-text" th:text="${request.location}"></p>
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <span th:if="!${request.accepted} and ${request.isDoneRequest()}"><p class="text-danger">Rejected Request</p></span>
+                        <span th:if="${request.accepted} and !${request.isDoneRequest()}" class="text-primary">Accepted Request</span>
+                        <span th:if="!${request.isDoneRequest()} and !${request.accepted}">Pending..</span>
+                        <span th:if="${request.accepted} and ${request.isDoneRequest()}">
+                            <a th:href="@{/addReview/{id}(id=${request.giveMeProviderId()})}"><button type="submit" class="btn btn-primary">Add Review</button></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+
+
+<script th:src="@{/js/jquery.slim.min.js}"></script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

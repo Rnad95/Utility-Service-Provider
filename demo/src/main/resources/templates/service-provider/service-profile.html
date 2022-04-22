@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
-<body class = "home">
+<body class = "home service-provider-profile">
 <header th:replace="common/layout :: header"></header>
 
 <div>
@@ -20,7 +20,7 @@
 
 <main class = "main">
     <div class="container rounded bg-white mt-5 mb-5">
-        <div class="row service-provider-profile">
+        <div class="row service-provider-profile-container">
             <div class="col-md-6 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" th:src="${user.imageURL}"><span class="font-weight-bold" th:text="${user.firstName}+' '+${user.lastName}"></span><span class="text-black-50" th:text="${user.email}"></span><span> </span></div>
             </div>

@@ -109,8 +109,13 @@ main{
     background: var(--bs-fourth);
 }
 
-.signup-sppage #main-box{
-    height: 1050px;
+.signup-sppage #main-box {
+    height: 1000px;
+    width: 800px;
+    background: var(--bs-fourth);
+}
+.edit-profile #main-box{
+    height: 650px;
     width: 800px;
     background: var(--bs-fourth);
 }
@@ -458,13 +463,7 @@ a[data-toggle="collapse"] {
     #sidebarCollapse span {
         display: none; } }
 
-#content {
-    width: 100%;
-    padding: 0;
-    min-height: 100vh;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s; }
+
 
 .create-category-form{
     border: 1px solid #d7d7d7;
@@ -475,8 +474,9 @@ a[data-toggle="collapse"] {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.service-provider-profile{
+.my-profile .main .container{
     border:1px solid #d7d7d7;
+
 }
 
 /* Adapts a floating label for use with a left-handed input group icon */
@@ -484,3 +484,113 @@ a[data-toggle="collapse"] {
     padding-left: 3.5rem;
     z-index: 3;
 }
+.proider-req .card , .my-profile .card{
+    padding: 20px;
+    margin: 10px auto;
+    background: #f7f7f7;
+}
+
+.star-rating form {
+    display: none;
+}
+.star-rating .thanks-msg {
+    display: none;
+    font-size: 20px;
+    margin: 40px auto;
+    color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1411764705882353);
+    padding: 8px 20px;
+    border-left: 3px solid #4caf50;
+    border-radius: 20px;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating {
+    margin: 50px auto;
+    display: table;
+}
+.star-rating label {
+    padding: 10px;
+    float: right;
+    font-size: 20px;
+    color: #eee;
+    margin: 10px 0px;
+}
+.star-rating input:not(:checked) ~ label:hover,
+.star-rating input:not(:checked) ~ label:hover ~ label {
+    color: #ffc107;
+}
+.star-rating input:checked ~ label {
+    color: #ffc107;
+}
+.star-rating form .rating-reaction:before {
+    width: 100%;
+    float: left;
+    color: #ffc107;
+}
+.star-rating #rating-1:checked ~ form .rating-reaction:before {
+    content: "I hate it";
+}
+.star-rating #rating-2:checked ~ form .rating-reaction:before {
+    content: "I don't like it";
+}
+.star-rating #rating-3:checked ~ form .rating-reaction:before {
+    content: "It is good";
+}
+.star-rating #rating-4:checked ~ form .rating-reaction:before {
+    content: "I like it";
+}
+.star-rating #rating-5:checked ~ form .rating-reaction:before {
+    content: "I love it";
+}
+.star-rating input:checked ~ form {
+    border-top: 1px solid #ddd;
+    width: 100%;
+    padding-top: 15px;
+    margin-top: 15px;
+    display: inline-block;
+}
+.star-rating form .rating-reaction {
+    font-size: 24px;
+    float: left;
+    text-transform: capitalize;
+}
+.star-rating form .submit-rating {
+    border: none;
+    outline: none;
+    background: #795548;
+    color: #ffc107;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    cursor: pointer;
+    float: right;
+}
+form .submit-rating:hover {
+    background-color: #333;
+}
+.review #main-box{
+    padding: 20px;
+}
+
+.login-page .login-form i{
+    margin-top: 27px;
+}
+.provider-list .thumb{
+    margin-right: 49px;
+}
+.provider-list .provider-list-container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.service-provider-profile .service-provider-profile-container{
+    border: 1px solid #d7d7d7;
+}
+.admin #content {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }

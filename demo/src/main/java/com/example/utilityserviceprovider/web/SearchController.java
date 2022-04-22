@@ -91,7 +91,6 @@ public class SearchController {
         MyUser myUser = providerService.get(id);
         m.addAttribute("myUser", myUser);
         return "edit_profile";
-
     }
 
     @PostMapping("/edit/{id}")
@@ -103,7 +102,7 @@ public class SearchController {
         currentUser.setPhoneNumber(UserUpdate.getPhoneNumber());
         currentUser.setEmail(UserUpdate.getEmail());
         myUserRepo.save(currentUser);
-        return new RedirectView("/profile/{id}");
+        return new RedirectView("/");
     }
 
     //      DELETE THE ACCOUNT

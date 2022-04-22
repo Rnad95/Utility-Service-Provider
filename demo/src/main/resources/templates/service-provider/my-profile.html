@@ -7,61 +7,46 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
-<body class = "home">
+<body class = "my-profile">
 <header th:replace="common/layout :: header"></header>
-<br>
-<div>
-    <h3>My profile</h3>
-    <br>
-    <div class="">
-        <img th:src="${user.imageURL}" alt="Image" style="width:200px">
-        <!--        <h3>Service provider Information</h3>-->
-        <h3 th:text="${user.firstName}+' '+${user.lastName}"></h3>
-
-        <!--        <h5 th:text="${user}"></h5>-->
-        <h4>Details</h4>
-        <div th:if="${user.role.id} == 3">
-            <h1>This is Service Provider</h1>
-        </div>
-
-        <p th:text="${user.username}"></p>
-        <p th:text="${user.rate}"></p>
-
-        <div th:if="${user.role.id} == 3">
-            <p>The service provider should check the appointments</p>
-            <a class="nav-link-signup" th:href="@{'/requests/' + ${user.id}}">check appointment</a>
-        </div>
-
-        <div th:if="${user.role.id} == 2">
-            <p>This is customer should see book</p>
-            <button type="submit">view my Request appointment</button>
-        </div>
-        <br>
-        <!--        render provider's reviews        -->
-
-        <div>
-            <div th:each="review :${reviews}">
-                <p th:text="${review.content}"></p>
-                <p th:text="${review.stars}"></p>
+    <main class = "main">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row service-provider-profile">
+                <div class="col-md-6 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" th:src="${user.imageURL}" alt="Image">
+                        <span class="font-weight-bold" th:text="${user.firstName}+' '+${user.lastName}"></span>
+                        <span class="text-black-50" th:text="${user.email}"></span>
+                        <div>Rate : <span class="font-weight-bold" th:text="${user.rate}"></span></div>
+                        <div class="d-flex" >
+                            <button class="btn btn-primary text-white m-2"><a th:href="'/edit/'+${user.id}" class="text-white">Edit</a></button>
+                            <button class="btn btn-danger text-white m-2"><a th:href="'/delete/'+${user.id}" class="text-white">Delete</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 border-right d-flex justify-content-center align-items-center flex-column"  sec:authorize="hasAuthority('SERVICEPROVIDER')">
+                    <a class="nav-link-signup" th:href="@{'/requests/' + ${user.id}}">check appointment</a>
+                </div>
+            </div>
+            <div class="row">
+                <div th:each="review :${reviews}">
+                    <div class="card jumbotron">
+                        <div class="row justify-content-left d-flex">
+                            <div class="col-md-4 d-flex flex-column">
+                                <div class="rating-box">
+                                    <h1 class="pt-4" th:text="${review.stars}">4.0</h1>
+                                    <p >out of 5</p>
+                                </div>
+                                <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-inactive mx-1"></span> </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="rating-bar0 justify-content-center" th:text="${review.content}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!--        For All users edit and delete-->
-        <p th:align="center">***************************************************</p>
-        <form th:action="'/edit/'+${user.id}">
-            <h3>Edit My account</h3>
-            <br>
-            <input type="submit" value="Edit" />
-        </form>
-        <form th:action="'/delete/'+${user.id}">
-
-            <h3>delete My account</h3>
-            <br>
-            <input type="submit" value="delete" />
-            </fieldset>
-        </form>
-    </div>
-</div>
-
+</main>
 <footer th:replace="common/layout :: footer"></footer>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>

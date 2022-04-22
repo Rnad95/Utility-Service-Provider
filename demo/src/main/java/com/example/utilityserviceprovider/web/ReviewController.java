@@ -30,12 +30,11 @@ public class ReviewController {
         newReview.setProvider(provider);
         reviewRepository.save(newReview);
 
-        return new RedirectView("/addReview/{id}");
+        return new RedirectView("/");
     }
 
     @GetMapping("/addReview/{id}") //id = sp id
     public String addReviewGet (@PathVariable Long id ,Model model){
-
         MyUser provider=myUserRepo.findById(id).orElseThrow();
         List<Review> reviews = reviewRepository.findAllByProviderId(id);
         model.addAttribute("provider",provider);

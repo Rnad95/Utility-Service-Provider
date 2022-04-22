@@ -1,9 +1,6 @@
 package com.example.utilityserviceprovider.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +10,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
 public class Category {
 
     @Setter(value= AccessLevel.NONE)

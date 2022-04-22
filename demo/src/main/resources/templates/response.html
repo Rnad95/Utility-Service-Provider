@@ -1,50 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Response</title>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
-<body>
-<div>
-    <div>
-        <p th:text="${request.details}" class="details"></p>
-        <p th:text="${request.date}" class="date"></p>
-        <p th:text="${request.time}" class="time"></p>
-        <p th:text="${request.location}" class="location"></p>
-    </div>
-    <div>
-             <span th:if="!${request.accepted} and !${request.isDoneRequest()}">
-                 <p>good job</p>
-                 <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST">
-                     <button type="submit">
-                         Reject
-                     </button>
-                 </form>
+<body class = "proider-req">
+<header th:replace="common/layout :: header"></header>
 
-                 <form th:action="@{/accept-request/{id}(id=${request.id})}" method="POST">
-                     <button type="submit">
-                         Accept
-                     </button>
-                 </form>
-             </span>
 
-        <span th:if="!${request.accepted} and ${request.isDoneRequest()}">
-            <p>Rejected Request</p>
-        </span>
-
-        <span th:if="${request.accepted} and !${request.isDoneRequest()}">
-            <form th:action="@{/done-request/{id}(id=${request.id})}" method="POST">
-                <button type="submit">
-                    Done
-                </button>
-            </form>
-        </span>
-
-        <span th:if="${request.accepted} and ${request.isDoneRequest()}">
-            <p> Done Request</p>
-        </span>
+<main class = "main">
+    <div class="container">
+        <div class="my-3">
+            <div class="card">
+                <div class="card-header"  th:text="${request.date}"></div>
+                <div class="card-body" >
+                    <h5 class="card-title" th:text="${request.details}"></h5>
+                    <p class="card-text" th:text="${request.location}"></p>
+                   <div class="d-flex justify-content-center align-items-center" th:if="!${request.accepted} and !${request.isDoneRequest()}">
+                       <form th:action="@{/reject-request/{id}(id=${request.id})}" method="POST" class="mx-2">
+                           <button type="submit" class="btn btn-danger">Reject</button>
+                       </form>
+                       <form th:action="@{/accept-request/{id}(id=${request.id})}" method="POST" class="mx-2">
+                           <button type="submit" class="btn btn-primary">Accept</button>
+                       </form>
+                   </div>
+                   <div class="d-flex justify-content-center align-items-center">
+                       <span th:if="!${request.accepted} and ${request.isDoneRequest()}"><p>Rejected Request</p></span>
+                       <span th:if="${request.accepted} and !${request.isDoneRequest()}">
+                            <form th:action="@{/done-request/{id}(id=${request.id})}" method="POST"><button type="submit"  class="btn btn-primary">Done</button></form>
+                       </span>
+                       <span th:if="${request.accepted} and ${request.isDoneRequest()}"><p> Done Request</p></span>
+                   </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-</div>
+</main>
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+
+
+<script th:src="@{/js/jquery.slim.min.js}"></script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

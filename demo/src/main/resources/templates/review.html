@@ -1,30 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Reviews</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
 </head>
-<body>
-<form th:action="'/addReview/'+${provider.id}" method="POST">
+<body class = "home review">
+<header th:replace="common/layout :: header"></header>
 
-    <h3 th:text="${provider.firstName}+' '+${provider.lastName}"></h3>
-    <h3 th:text="${provider.rate}"></h3>
 
-    <label for="content">Share us your experience </label>
-    <input id="content" type="text" name="content">
 
-    <label for="stars">Rate your experience </label>
-    <input id="stars" type="number" name="stars">
-
-    <button type="submit">Add Review</button>
-</form>
-
-<div>
-    <div th:each="review :${reviews}">
-        <p th:text="${review.content}"></p>
-        <p th:text="${review.stars}"></p>
+<main class = "main">
+    <div class="container">
+        <div id="main-box">
+            <form th:action="'/addReview/'+${provider.id}" method="POST">
+                <div>
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="content">Share us your experience</label>
+                        <textarea id="content" class="form-control" type="text" name="content" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="star-rating">
+                    <div class="thanks-msg">Thanks for your feedback !!!</div>
+                    <div class="star-input">
+                        <input type="radio" name="stars" id="rating-5" value="5">
+                        <label for="rating-5" class="fas fa-star"></label>
+                        <input type="radio" name="stars" id="rating-4" value="4">
+                        <label for="rating-4" class="fas fa-star"></label>
+                        <input type="radio" name="stars" id="rating-3" value="3">
+                        <label for="rating-3" class="fas fa-star"></label>
+                        <input type="radio" name="stars" id="rating-2" value="2">
+                        <label for="rating-2" class="fas fa-star"></label>
+                        <input type="radio" name="stars" id="rating-1" value="1">
+                        <label for="rating-1" class="fas fa-star"></label>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</main>
+<footer th:replace="common/layout :: footer"></footer>
 
+<script th:src="@{/js/jquery.slim.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>

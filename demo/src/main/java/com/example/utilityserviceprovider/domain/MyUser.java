@@ -17,7 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-
+@Builder
+@AllArgsConstructor
 public class MyUser<set> implements UserDetails {
 
     @Setter(value= AccessLevel.NONE)
@@ -75,11 +76,9 @@ public class MyUser<set> implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
-
         this.rate=0;
         this.numberOfStars=0;
         this.sumOfStars=0;
-
     }
 
     public MyUser() {
@@ -139,7 +138,9 @@ public class MyUser<set> implements UserDetails {
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", Category='" + category + '\'' +
                 ", role=" + role +
+
                 '}';
     }
 

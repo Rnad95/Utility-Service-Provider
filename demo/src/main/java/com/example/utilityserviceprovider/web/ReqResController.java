@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ReqResController {
@@ -29,6 +32,7 @@ public class ReqResController {
     @GetMapping("/my-requests/{id}")
     public String getCustomerRequests(@PathVariable Long id ,Model model){
         List <ServiceRequest> requests = requestRepository.findAllByCustomerId(id);
+        requests=requests.stream().sorted(Comparator.comparing(ServiceRequest::getId)).collect(Collectors.toList());
         model.addAttribute("requests",requests);
         return "customer/customer-requests";
     }
@@ -50,12 +54,11 @@ public class ReqResController {
         newRequest.setProvider(provider);
 
         List <ServiceRequest> requests = requestRepository.findAllByProviderId(id);
-        for(int i=0 ;i<requests.size();i++){
-
-            if(requests.get(i).getDate()==request.getDate() && requests.get(i).getTime()==request.getTime()){
-                System.out.println("************************NOT AVAILABLE TIME*************************");
-            }
-        }
+//        for(int i=0 ;i<requests.size();i++){
+//
+//            if(requests.get(i).getDate()==request.getDate() && requests.get(i).getTime()==request.getTime()){
+//            }
+//        }
         //bring the customer
         MyUser customer = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         newRequest.setCustomer(customer);
@@ -75,46 +78,49 @@ public class ReqResController {
     }
 
     @PostMapping("/accept-request/{id}") //id is the id of the request
-    public RedirectView acceptRequest (@PathVariable Long id){
+    public RedirectView acceptRequest (@PathVariable Long id , Principal principal){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
         request.setAccepted(true);
         requestRepository.save(request);
-        return new RedirectView("/requests/{id}"); //returning to the provider's requests page
+        MyUser provider = myUserRepo.findByUsername(principal.getName());
+        return new RedirectView("/requests/"+provider.getId()); //returning to the provider's requests page
     }
     @PostMapping("/reject-request/{id}") //id is the id of the request
-    public RedirectView rejectRequest (@PathVariable Long id){
+    public RedirectView rejectRequest (@PathVariable Long id,Principal principal){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
         request.setAccepted(false);
         request.setDoneRequest(true);
         requestRepository.save(request);
-
-        return new RedirectView("/requests/{id}"); //returning to the provider's requests page
+        MyUser provider = myUserRepo.findByUsername(principal.getName());
+        return new RedirectView("/requests/"+provider.getId()); //returning to the provider's requests page
     }
 
     @PostMapping("/done-request/{id}")//id is the id of the request
-    public RedirectView doneRequest (@PathVariable Long id){
+    public RedirectView doneRequest (@PathVariable Long id,Principal principal){
         ServiceRequest request=requestRepository.findById(id).orElseThrow();
         request.setDoneRequest(true);
         requestRepository.save(request);
-        return new RedirectView("/requests/{id}");
+        MyUser provider = myUserRepo.findByUsername(principal.getName());
+        return new RedirectView("/requests/"+provider.getId());
     }
     //--------------------------------------------------------------------------------
-        @GetMapping("/requests/{id}")
-        public String checkingPSRequests (@PathVariable Long id ,Model model ){
+    @GetMapping("/requests/{id}")
+    public String checkingPSRequests (@PathVariable Long id ,Model model ){
         MyUser provider=myUserRepo.findById(id).orElseThrow();
         List<ServiceRequest> requests = requestRepository.findAllByProviderId(id);
-        model.addAttribute("requests",requests);
+        requests=requests.stream().sorted(Comparator.comparing(ServiceRequest::getId)).collect(Collectors.toList());
+        model.addAttribute("requests", requests);
         return "service-provider/provider-requests.html";
-        }
+    }
 
 
     //---------------------------------------------------------------------------------
-    @ModelAttribute("user")
-    public MyUser myUserEverywhere(){
+    @ModelAttribute("username")
+    public String myUserEverywhere(){
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass() == MyUser.class)
         {
             MyUser user = (MyUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            return user;
+            return user.getUsername();
         }
         else
             return null;

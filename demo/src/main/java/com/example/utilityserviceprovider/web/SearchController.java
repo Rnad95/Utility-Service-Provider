@@ -1,9 +1,9 @@
 package com.example.utilityserviceprovider.web;
 
 import com.example.utilityserviceprovider.domain.MyUser;
-import com.example.utilityserviceprovider.domain.Role;
-import com.example.utilityserviceprovider.domain.ServiceRequest;
+import com.example.utilityserviceprovider.domain.Review;
 import com.example.utilityserviceprovider.infrastructure.MyUserRepo;
+import com.example.utilityserviceprovider.infrastructure.ReviewRepository;
 import com.example.utilityserviceprovider.infrastructure.RoleRepo;
 import com.example.utilityserviceprovider.services.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -29,6 +27,8 @@ public class SearchController {
     MyUserRepo myUserRepo;
     @Autowired
     RoleRepo roleRepo;
+    @Autowired
+    ReviewRepository reviewRepository;
 
 //    @RequestMapping("/search")
 //    public String viewHomePage(Model model, @Param("keyword") String keyword) {
@@ -49,34 +49,40 @@ public class SearchController {
     String viewRenderPage(Model model, @Param("keyword") String keyword){
         List<MyUser> listProvider = providerService.listAll(keyword);
         model.addAttribute("SerProvList",listProvider);
-        return "render-sp";
+        return "service-provider/render-sp";
     }
 
-    //    public String getRequestForm (Model model ,@PathVariable Long id){
+
+//
+//    public String getRequestForm (Model model ,@PathVariable Long id){
 //        MyUser provider = myUserRepo.findById(id).orElseThrow();
 //        model.addAttribute("provider", provider);
 //        return "request.html";
 //    }
+
     @GetMapping("/profile/{id}")
     public String getHome(Principal p , Model m, @PathVariable Long id){
         if(p!=null){
 //            UserDetails myUser= myUserRepo.findByUsername(p.getName());
             MyUser myUser = myUserRepo.findById(id).orElseThrow();
 
-            m.addAttribute("userAcc",myUser);
-            return "service-profile";
+            m.addAttribute("user",myUser);
+            return "service-provider/service-profile";
         }
-        return "service-profile";
+        return "service-provider/service-profile";
     }
 
-    @GetMapping("/myProfile")
+    @GetMapping("/service-profile")
     public String myProfile(Principal p , Model m){
+
         if(p!=null){
-            UserDetails myUser= myUserRepo.findByUsername(p.getName());
-            m.addAttribute("userAcc",myUser);
-            return "my-profile";
+            MyUser myUser= myUserRepo.findByUsername(p.getName());
+            List<Review> reviews = reviewRepository.findAllByProvider(myUser);
+            m.addAttribute("reviews",reviews);
+            m.addAttribute("user",myUser);
+            return "service-provider/my-profile";
         }
-        return "my-profile";
+        return "service-provider/my-profile";
     }
 //************************************ Try to Edit The information ****************************
 
@@ -85,7 +91,6 @@ public class SearchController {
         MyUser myUser = providerService.get(id);
         m.addAttribute("myUser", myUser);
         return "edit_profile";
-
     }
 
     @PostMapping("/edit/{id}")
@@ -96,11 +101,8 @@ public class SearchController {
         currentUser.setImageURL(UserUpdate.getImageURL());
         currentUser.setPhoneNumber(UserUpdate.getPhoneNumber());
         currentUser.setEmail(UserUpdate.getEmail());
-
-        System.out.println("******************************************************************"+currentUser);
-        System.out.println("**********************************UserUpdate********************************"+UserUpdate);
         myUserRepo.save(currentUser);
-        return new RedirectView("/profile/{id}");
+        return new RedirectView("/");
     }
 
     //      DELETE THE ACCOUNT

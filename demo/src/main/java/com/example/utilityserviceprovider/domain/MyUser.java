@@ -17,7 +17,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-
+@Builder
+@AllArgsConstructor
 public class MyUser<set> implements UserDetails {
 
     @Setter(value= AccessLevel.NONE)
@@ -37,6 +38,10 @@ public class MyUser<set> implements UserDetails {
     private  String phoneNumber;
     private  String email;
 
+    private double rate;
+    private double sumOfStars;
+    private double numberOfStars;
+
 
     //relationship with category
     @ManyToOne
@@ -48,6 +53,7 @@ public class MyUser<set> implements UserDetails {
     @JoinColumn(name = "role_id" , referencedColumnName = "id")
     private Role role;
 
+
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "customer")
     List<ServiceRequest> requestsList;
@@ -55,6 +61,11 @@ public class MyUser<set> implements UserDetails {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "provider")
     List<ServiceRequest> responsesList;
+
+    //review relationship
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "provider")
+    List<Review> reviewsList;
 
 
     public MyUser(String username, String firstName, String lastName, String imageURL, String password, String email, String phoneNumber) {
@@ -65,7 +76,9 @@ public class MyUser<set> implements UserDetails {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
-
+        this.rate=0;
+        this.numberOfStars=0;
+        this.sumOfStars=0;
     }
 
     public MyUser() {
@@ -74,6 +87,11 @@ public class MyUser<set> implements UserDetails {
 
     public void addRequest(ServiceRequest request){
         requestsList.add(request);
+    }
+
+    public void addReview(String content, double stars){
+        Review newReview = new Review(content , stars);
+        reviewsList.add(newReview);
     }
 
     public void addResponse(ServiceRequest response){
@@ -120,7 +138,9 @@ public class MyUser<set> implements UserDetails {
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
+                ", Category='" + category + '\'' +
                 ", role=" + role +
+
                 '}';
     }
 

@@ -11,4 +11,7 @@ import java.util.List;
 public interface ServiceRequestRepository extends JpaRepository<ServiceRequest, Long> {
     List<ServiceRequest> findAllByProviderId(Long id);
 
+    List<ServiceRequest> findAllByCustomerId(Long id);
+
+
 }

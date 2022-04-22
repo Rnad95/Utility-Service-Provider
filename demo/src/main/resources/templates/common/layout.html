@@ -40,8 +40,14 @@
                                 <li sec:authorize="hasAuthority('CUSTOMER')" >
                                     <a class="dropdown-item" href="/customer-profile">My profile</a>
                                 </li>
+                                <li sec:authorize="hasAuthority('CUSTOMER')" >
+                                    <a class="dropdown-item" href="/allProviders">All providers</a>
+                                </li>
                                 <li sec:authorize="hasAuthority('SERVICEPROVIDER')" >
-                                    <a class="dropdown-item" href="/sp-profile">My profile</a>
+                                    <a class="dropdown-item" href="/service-profile">My profile</a>
+                                </li>
+                                <li sec:authorize="hasAuthority('ADMIN')" >
+                                    <a class="dropdown-item" href="/admin">Dashboard</a>
                                 </li>
                                 <li><a class="dropdown-item" href="/logout-process">Logout</a></li>
                             </ul>
@@ -101,8 +107,7 @@
                             <i class="fas fa-gem me-3"></i>Company name
                         </h6>
                         <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
+                            Utility Service Provider
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -114,16 +119,16 @@
                             Products
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Angular</a>
+                            <a href="#!" class="text-reset">Electrical Machine</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">React</a>
+                            <a href="#!" class="text-reset">Home Maintenance</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Vue</a>
+                            <a href="#!" class="text-reset">Car Maintenance</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Laravel</a>
+                            <a href="#!" class="text-reset">Others</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -138,10 +143,10 @@
                             <a href="#!" class="text-reset">Pricing</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Settings</a>
+                            <a href="#!" class="text-reset">Account</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Orders</a>
+                            <a href="#!" class="text-reset">Requests</a>
                         </p>
                         <p>
                             <a href="#!" class="text-reset">Help</a>
@@ -155,10 +160,10 @@
                         <h6 class="text-uppercase fw-bold mb-4">
                             Contact
                         </h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                        <p><i class="fas fa-home me-3"></i>Amman</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>
-                            info@example.com
+                            utility@utility.com
                         </p>
                         <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
                         <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>

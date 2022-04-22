@@ -1,27 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="stylesheet" th:href="@{/css/request.css}">-->
-
     <title>Create Request</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css'>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css'>
 </head>
-<body>
-<form th:action="@{/addRequest/{id}(id=${provider.id})}" method="POST">
+<body class="login-page">
+<header th:replace="common/layout :: header"></header>
+<div id="main-box" class="bg-white p-4">
 
-<!--    <label for="date">Date</label>-->
-<!--    <input id="date" type="date" name="date">-->
+    <form  th:action="@{/addRequest/{id}(id=${provider.id})}" method="POST">
+        <h4>Booking From</h4>
+        <div class="mb-3">
+            <label for="details" class="form-label">Service Details</label>
+            <input type="text" class="form-control" id="details"  name="details">
+        </div>
+        <div class="form-floating input-group mb-4">
+            <i class="bi bi-calendar-date input-group-text"></i>
+            <input type="text" id="date" class="datepicker_input form-control" placeholder="DD/MM/YYYY" required name="date">
+            <label for="date">Date</label>
+        </div>
+        <div class="mb-3">
+            <label for="time" class="form-label">Time</label>
+            <input type="time" class="form-control" id="time" name="time">
+        </div>
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="location" class="form-control" id="location"  name="location">
+        </div>
 
-    <label for="details">Service Details</label>
-    <input id="details" type="text" name="details">
-
-    <label for="location">Location</label>
-    <input id="location" type="text" name="location">
-
-    <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
+</div>
+<footer th:replace="common/layout :: footer"></footer>
+<script th:src = "@{/js/bootstrap.min.js}"></script>
+<script src='https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js'></script>
+<script>
+    /* Bootstrap 5 JS included */
+    /* vanillajs-datepicker 1.1.4 JS included */
 
-</form>
+    const getDatePickerTitle = elem => {
+        // From the label or the aria-label
+        const label = elem.nextElementSibling;
+        let titleText = '';
+        if (label && label.tagName === 'LABEL') {
+            titleText = label.textContent;
+        } else {
+            titleText = elem.getAttribute('aria-label') || '';
+        }
+        return titleText;
+    }
 
+    const elems = document.querySelectorAll('.datepicker_input');
+    for (const elem of elems) {
+        const datepicker = new Datepicker(elem, {
+            'format': 'dd/mm/yyyy', // UK format
+            title: getDatePickerTitle(elem)
+        });
+    }
+</script>
 </body>
 </html>

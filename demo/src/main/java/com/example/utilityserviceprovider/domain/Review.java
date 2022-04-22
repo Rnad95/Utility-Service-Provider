@@ -1,10 +1,12 @@
 package com.example.utilityserviceprovider.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+@Getter
+@Setter
 @Entity
 public class Review {
 
@@ -27,34 +29,34 @@ public class Review {
     }
     public Review(String content, double stars) {
         this.content = content;
-        this.stars = stars;
-        CheckStar(stars);
+        checkStar(stars);
     }
 
-    /**
-     *
-     * @Getter and
-     */
-
-    public Long getId() {
-        return id;
+    private void calculate (double stars){
+        provider.setSumOfStars(provider.getSumOfStars()+stars);
+        provider.setNumberOfStars(provider.getNumberOfStars()+1);
+        provider.setRate(provider.getSumOfStars()/provider.getNumberOfStars());
     }
-    public String getContent() {
-        return content;
-    }
-    public double getStars() {
-        return stars;
+    public void setProvider (MyUser provider){
+        this.provider=provider;
+        calculate(stars);
     }
 
+    //relationships
+    @ManyToOne
+    MyUser provider;
     /**
      * Check the stars
      * @param stars
      */
-    public void CheckStar(double stars) {
+    public void checkStar(double stars) {
         if (stars > 0 && stars <= 5) {
             this.stars = stars;
         }else{
-            throw new IllegalArgumentException();
+            if(stars>5)
+                this.stars=5;
+            if(stars<0)
+                this.stars=0;
         }
     }
 

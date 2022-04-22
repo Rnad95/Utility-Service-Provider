@@ -21,8 +21,8 @@ public class ServiceRequest {
     private Long id;
 
 //    @CreationTimestamp
-//    private Date date; //must be checked to be unique (manually)
-
+    private String date; //must be checked to be unique (manually)
+    private String time;
     private boolean doneRequest;
     private boolean accepted;
 
@@ -46,24 +46,31 @@ public class ServiceRequest {
     }
 
 
-    public ServiceRequest(String details,String location) {
-//        this.date = date;
+    public ServiceRequest( String details,String location,String date , String time) {
         this.doneRequest = false; //not done when created
         this.accepted=false;    // not accepted when created
         this.details=details;
         this.location=location;
+        this.date =date;
+        this.time=time;
+
     }
 
     public boolean isDoneRequest() {
         return doneRequest;
     }
 
-
+    public long giveMeProviderId (){
+        return provider.getId();
+    }
 
     @Override
     public String toString() {
         return "ServiceRequest{" +
-                "doneRequest=" + doneRequest +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", doneRequest=" + doneRequest +
                 ", accepted=" + accepted +
                 ", details='" + details + '\'' +
                 ", location='" + location + '\'' +

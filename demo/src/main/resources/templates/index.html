@@ -1,327 +1,10 @@
-<!--<!DOCTYPE html>-->
-
-
-<!--<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
-<!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
-<!--&lt;!&ndash;    <link th:href="@{/index.css}" rel="stylesheet">&ndash;&gt;-->
-<!--</head>-->
-<!--<body class = "home">-->
-<!--    <header class = "header">-->
-<!--        <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--            <div class="container-fluid">-->
-<!--                <a class="navbar-brand" href="#">Navbar</a>-->
-<!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                    <span class="navbar-toggler-icon"></span>-->
-<!--                </button>-->
-<!--                <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link active" aria-current="page" href="#">Home</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link" href="#">Link</a>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item dropdown">-->
-<!--                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                Dropdown-->
-<!--                            </a>-->
-<!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                                <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                                <li><hr class="dropdown-divider"></li>-->
-<!--                                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                    <form class="d-flex">-->
-<!--                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                        <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </nav>-->
-<!--    </header>-->
-
-<!--    <main class = "main">-->
-<!--        <div class="row">-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                        <nav class="container">-->
-<!--                            <a href = "www.w3shool.com">Link</a>-->
-<!--                            <a href = "www.w3shool.com">Link</a>-->
-<!--                            <a href = "www.w3shool.com">Link</a>-->
-<!--                            <a href = "www.w3shool.com">Link</a>-->
-<!--                        </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--                <div class = "col-3">-->
-<!--                    <div class = "card">-->
-<!--                        <h2>Title</h2>-->
-<!--                            <nav class="container">-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                            </nav>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class = "col-3">-->
-<!--                    <div class = "card">-->
-<!--                        <h2>Title</h2>-->
-<!--                            <nav class="container">-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                                <a href = "www.w3shool.com">Link</a>-->
-<!--                            </nav>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        <div class="row">-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class = "col-3">-->
-<!--                <div class = "card">-->
-<!--                    <h2>Title</h2>-->
-<!--                    <nav class="container">-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                        <a href = "www.w3shool.com">Link</a>-->
-<!--                    </nav>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </main>-->
-<!--    &lt;!&ndash; Footer &ndash;&gt;-->
-<!--    <footer class="text-center text-lg-start bg-light text-muted">-->
-<!--        &lt;!&ndash; Section: Social media &ndash;&gt;-->
-<!--        <section-->
-<!--                class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"-->
-<!--        >-->
-<!--            &lt;!&ndash; Left &ndash;&gt;-->
-<!--            <div class="me-5 d-none d-lg-block">-->
-<!--                <span>Get connected with us on social networks:</span>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Left &ndash;&gt;-->
-
-<!--            &lt;!&ndash; Right &ndash;&gt;-->
-<!--            <div>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-facebook-f"></i>-->
-<!--                </a>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-twitter"></i>-->
-<!--                </a>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-google"></i>-->
-<!--                </a>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-instagram"></i>-->
-<!--                </a>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-linkedin"></i>-->
-<!--                </a>-->
-<!--                <a href="" class="me-4 text-reset">-->
-<!--                    <i class="fab fa-github"></i>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Right &ndash;&gt;-->
-<!--        </section>-->
-<!--        &lt;!&ndash; Section: Social media &ndash;&gt;-->
-
-<!--        &lt;!&ndash; Section: Links  &ndash;&gt;-->
-<!--        <section class="">-->
-<!--            <div class="container text-center text-md-start mt-5">-->
-<!--                &lt;!&ndash; Grid row &ndash;&gt;-->
-<!--                <div class="row mt-3">-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">-->
-<!--                        &lt;!&ndash; Content &ndash;&gt;-->
-<!--                        <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                            <i class="fas fa-gem me-3"></i>Company name-->
-<!--                        </h6>-->
-<!--                        <p>-->
-<!--                            Here you can use rows and columns to organize your footer content. Lorem ipsum-->
-<!--                            dolor sit amet, consectetur adipisicing elit.-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">-->
-<!--                        &lt;!&ndash; Links &ndash;&gt;-->
-<!--                        <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                            Products-->
-<!--                        </h6>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Angular</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">React</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Vue</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Laravel</a>-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">-->
-<!--                        &lt;!&ndash; Links &ndash;&gt;-->
-<!--                        <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                            Useful links-->
-<!--                        </h6>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Pricing</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Settings</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Orders</a>-->
-<!--                        </p>-->
-<!--                        <p>-->
-<!--                            <a href="#!" class="text-reset">Help</a>-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">-->
-<!--                        &lt;!&ndash; Links &ndash;&gt;-->
-<!--                        <h6 class="text-uppercase fw-bold mb-4">-->
-<!--                            Contact-->
-<!--                        </h6>-->
-<!--                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>-->
-<!--                        <p>-->
-<!--                            <i class="fas fa-envelope me-3"></i>-->
-<!--                            info@example.com-->
-<!--                        </p>-->
-<!--                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>-->
-<!--                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; Grid column &ndash;&gt;-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Grid row &ndash;&gt;-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        &lt;!&ndash; Section: Links  &ndash;&gt;-->
-
-<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
-<!--        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">-->
-<!--            © 2021 Copyright:-->
-<!--            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">UtilityServiceProvider.com</a>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Copyright &ndash;&gt;-->
-<!--    </footer>-->
-<!--    &lt;!&ndash; Footer &ndash;&gt;-->
-<!--&lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--&lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--&lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--&lt;!&ndash; -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
-<!--&lt;!&ndash;        if you are not logged in you will have buttons to go to sign up or login  &ndash;&gt;-->
-<!--&lt;!&ndash;    <div sec:authorize="isAnonymous()">&ndash;&gt;-->
-<!--&lt;!&ndash;        <h1>Welcome to the home page</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;        <form action="/costumer-signup" method="GET">&ndash;&gt;-->
-<!--&lt;!&ndash;            <h1>Don't have an account? Signup! </h1>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="submit">Signup</button>&ndash;&gt;-->
-<!--&lt;!&ndash;        </form>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <form action="/login" method="GET">&ndash;&gt;-->
-<!--&lt;!&ndash;            <h1>Already registered? Login  </h1>&ndash;&gt;-->
-<!--&lt;!&ndash;            <button type="submit">Login </button>&ndash;&gt;-->
-<!--&lt;!&ndash;        </form>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                if you are logged in you will have the logout button &ndash;&gt;-->
-<!--    <div sec:authorize="isAuthenticated()">-->
-<!--        <h1> you are in !</h1>-->
-
-
-<!--        <form action="/logout-process" method="GET">-->
-<!--            <button type="submit">Sign out</button>-->
-<!--        </form>-->
-<!--    </div>-->
-
-<!--<script th:src="@{/js/bootstrap.min.js}"></script>-->
-<!--</body>-->
-<!--</html>-->
 
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
@@ -333,18 +16,19 @@
 
 <main class = "main">
     <div class="container">
-        <div class="row mb-3">
+        <div class="row mb-4">
             <div class="banner">
                 <img th:src="@{/assets/images/banner.png}" alt="banner" >
             </div>
         </div>
 
+        <h4>Main Category</h4>
         <div class="d-flex flex-wrap flex-row">
             <div th:each="category : ${categories}">
                 <div class = "card">
                     <h4><a th:href="@{'/category/' + ${category.title}}" th:text="${category.title}"></a></h4>
-                    <nav class="container d-flex justify-content-center align-items-center flex-wrap">
-                        <div th:each="subCategory : ${category.children}" class="mx-2">
+                    <nav class="container d-flex align-items-center flex-wrap">
+                        <div th:each="subCategory : ${category.children}" class="mx-4">
                             <a th:href="@{'/category/' + ${subCategory.title}}" th:text="${subCategory.title}"></a>
                         </div>
                     </nav>
@@ -355,27 +39,6 @@
 </main>
 <!-- Footer -->
 <footer th:replace="common/layout :: footer"></footer>
-
-<!--                if you are logged in you will have the logout button -->
-<div sec:authorize="isAuthenticated()">
-    <h1> you are in !</h1>
-
-    <form action="/addSubCategories" method="GET">
-        <button type="submit">Add Sub-categories</button>
-    </form>
-
-    <form action="/myProfile" method="GET">
-        <button type="submit">My Profile</button>
-    </form>
-
-    <form action="/allProviders" method="GET">
-        <button type="submit">All providers</button>
-    </form>
-
-    <form action="/logout-process" method="GET">
-        <button type="submit">Sign out</button>
-    </form>
-</div>
 
 <script th:src="@{/js/jquery.slim.min.js}"></script>
 

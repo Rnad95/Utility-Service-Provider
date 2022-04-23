@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-23T13:55:27" hostname="renad-HP-Notebook" time="0.54">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests" time="0.54"/>
+  <system-out><![CDATA[16:54:40.610 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+16:54:40.636 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+16:54:40.721 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+16:54:40.737 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests], using SpringBootContextLoader
+16:54:40.742 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]: class path resource [com/example/utilityserviceprovider/UtilityServiceProviderApplicationTests-context.xml] does not exist
+16:54:40.743 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]: class path resource [com/example/utilityserviceprovider/UtilityServiceProviderApplicationTestsContext.groovy] does not exist
+16:54:40.744 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+16:54:40.745 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]: UtilityServiceProviderApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:54:40.824 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]
+16:54:40.922 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/renad/Desktop/Utility-Service/Utility-Service-Provider/demo/build/classes/java/main/com/example/utilityserviceprovider/UtilityServiceProviderApplication.class]
+16:54:40.924 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.utilityserviceprovider.UtilityServiceProviderApplication for test class com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests
+16:54:41.075 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.utilityserviceprovider.UtilityServiceProviderApplicationTests]: using defaults.
+16:54:41.075 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+16:54:41.104 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5316e95f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3f053c80, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6c6c5427, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@618c5d94, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5b40ceb, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13c3c1e1, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1d8062d2, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1e63ec0b, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3b956878, org.springframework.test.context.event.EventPublishingTestExecutionListener@36546a22, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@285c08c8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@295eaa7c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3918c187, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2c88b9fc, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@64dafeed, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@388ba540, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@47605f2f]
+16:54:41.109 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@239b0f9d testClass = UtilityServiceProviderApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@619bfe29 testClass = UtilityServiceProviderApplicationTests, locations = '{}', classes = '{class com.example.utilityserviceprovider.UtilityServiceProviderApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@7daa0fbd, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3403e2ac, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@74bf1791, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1339e7aa, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@31ff43be, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@424e1977], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.6)
+
+2022-04-23 16:54:41.633  INFO 7256 --- [    Test worker] u.UtilityServiceProviderApplicationTests : Starting UtilityServiceProviderApplicationTests using Java 18 on renad-HP-Notebook with PID 7256 (started by renad in /home/renad/Desktop/Utility-Service/Utility-Service-Provider/demo)
+2022-04-23 16:54:41.636  INFO 7256 --- [    Test worker] u.UtilityServiceProviderApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-04-23 16:54:42.782  INFO 7256 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-23 16:54:42.884  INFO 7256 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 5 JPA repository interfaces.
+2022-04-23 16:54:43.897  INFO 7256 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-04-23 16:54:43.958  INFO 7256 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.7.Final
+2022-04-23 16:54:44.191  INFO 7256 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-04-23 16:54:44.359  INFO 7256 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-23 16:55:02.077  INFO 7256 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-23 16:55:02.097  INFO 7256 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+Hibernate: create table category (id  bigserial not null, title varchar(255), parent_id int8, primary key (id))
+Hibernate: create table my_user (id  bigserial not null, email varchar(255), first_name varchar(255), imageurl varchar(255), last_name varchar(255), number_of_stars float8 not null, password varchar(255), phone_number varchar(255), rate float8 not null, sum_of_stars float8 not null, username varchar(255), category_id int8, role_id int8, primary key (id))
+Hibernate: create table review (id  bigserial not null, content varchar(255), stars float8 not null, provider_id int8, primary key (id))
+Hibernate: create table role (id  bigserial not null, name varchar(255), primary key (id))
+Hibernate: create table service_request (id  bigserial not null, accepted boolean not null, date varchar(255), details varchar(255), done_request boolean not null, location varchar(255), time varchar(255), customer_id int8, provider_id int8, primary key (id))
+Hibernate: alter table category drop constraint UK_lnmf77qvjnr2lmyxrrydom9hd
+Hibernate: alter table category add constraint UK_lnmf77qvjnr2lmyxrrydom9hd unique (title)
+Hibernate: alter table my_user drop constraint UK_sfp0l65piri344cgr5yiugcd3
+Hibernate: alter table my_user add constraint UK_sfp0l65piri344cgr5yiugcd3 unique (username)
+Hibernate: alter table category add constraint FK2y94svpmqttx80mshyny85wqr foreign key (parent_id) references category
+Hibernate: alter table my_user add constraint FKppog56p0u1ausf84lqxk7yt45 foreign key (category_id) references category
+Hibernate: alter table my_user add constraint FKc0l55p71qq22a6vklsu7c0tc8 foreign key (role_id) references role
+Hibernate: alter table review add constraint FKfx17rsndoyd2ulhmvo5hbq1db foreign key (provider_id) references my_user on delete cascade
+Hibernate: alter table service_request add constraint FKo0yrif1ulfck3cvxqf8d20411 foreign key (customer_id) references my_user on delete cascade
+Hibernate: alter table service_request add constraint FK6v1kghpkqdfxys0nxveca4uov foreign key (provider_id) references my_user on delete cascade
+2022-04-23 16:55:07.030  INFO 7256 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-04-23 16:55:07.041  INFO 7256 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-23 16:55:08.452  WARN 7256 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-23 16:55:09.493  INFO 7256 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-04-23 16:55:10.896  INFO 7256 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-04-23 16:55:11.875  INFO 7256 --- [    Test worker] u.UtilityServiceProviderApplicationTests : Started UtilityServiceProviderApplicationTests in 30.7 seconds (JVM running for 32.655)
+Hibernate: insert into role (name) values (?)
+2022-04-23 16:55:12.561  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading com.example.utilityserviceprovider.domain.Role@44f88149
+Hibernate: insert into role (name) values (?)
+2022-04-23 16:55:12.944  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading com.example.utilityserviceprovider.domain.Role@6edb093f
+Hibernate: insert into role (name) values (?)
+2022-04-23 16:55:13.297  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading com.example.utilityserviceprovider.domain.Role@431f8830
+Hibernate: insert into category (parent_id, title) values (?, ?)
+2022-04-23 16:55:13.713  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading Category{, title='Maintenance', children=[]}
+Hibernate: insert into category (parent_id, title) values (?, ?)
+2022-04-23 16:55:14.055  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading Category{, title='Car', children=[]}
+Hibernate: insert into category (parent_id, title) values (?, ?)
+2022-04-23 16:55:14.478  INFO 7256 --- [    Test worker] c.e.u.UtilityServiceProviderApplication  : Preloading Category{, title='Electric', children=[]}
+Hibernate: select role0_.id as id1_3_, role0_.name as name2_3_ from role role0_ where role0_.name=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select role0_.id as id1_3_, role0_.name as name2_3_ from role role0_ where role0_.name=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select role0_.id as id1_3_, role0_.name as name2_3_ from role role0_ where role0_.name=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: insert into category (parent_id, title) values (?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: select category0_.id as id1_0_0_, category0_.parent_id as parent_i3_0_0_, category0_.title as title2_0_0_, category1_.id as id1_0_1_, category1_.parent_id as parent_i3_0_1_, category1_.title as title2_0_1_ from category category0_ left outer join category category1_ on category0_.parent_id=category1_.id where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: select category0_.id as id1_0_0_, category0_.parent_id as parent_i3_0_0_, category0_.title as title2_0_0_, category1_.id as id1_0_1_, category1_.parent_id as parent_i3_0_1_, category1_.title as title2_0_1_ from category category0_ left outer join category category1_ on category0_.parent_id=category1_.id where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select category0_.id as id1_0_, category0_.parent_id as parent_i3_0_, category0_.title as title2_0_ from category category0_ where category0_.id=?
+Hibernate: select category0_.id as id1_0_0_, category0_.parent_id as parent_i3_0_0_, category0_.title as title2_0_0_, category1_.id as id1_0_1_, category1_.parent_id as parent_i3_0_1_, category1_.title as title2_0_1_ from category category0_ left outer join category category1_ on category0_.parent_id=category1_.id where category0_.id=?
+Hibernate: insert into my_user (category_id, email, first_name, imageurl, last_name, number_of_stars, password, phone_number, rate, role_id, sum_of_stars, username) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

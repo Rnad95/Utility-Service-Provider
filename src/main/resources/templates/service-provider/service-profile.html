@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!--    <link th:href="@{/index.css}" rel="stylesheet">-->
+</head>
+<body class = "home service-provider-profile">
+<header th:replace="common/layout :: header"></header>
+
+<div>
+
+
+
+    </div>
+</div>
+
+<main class = "main">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row service-provider-profile-container">
+            <div class="col-md-6 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" th:src="${user.imageURL}"><span class="font-weight-bold" th:text="${user.firstName}+' '+${user.lastName}"></span><span class="text-black-50" th:text="${user.email}"></span><span> </span></div>
+            </div>
+            <div class="col-md-6 border-right d-flex justify-content-center align-items-center"  sec:authorize="hasAuthority('CUSTOMER')">
+                <a th:href="'/addRequest/'+${user.id}" class="nav-link-login">Book appointment</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</main>
+<!-- Footer -->
+<footer th:replace="common/layout :: footer"></footer>
+
+<!--                if you are logged in you will have the logout button -->
+<!--<div sec:authorize="isAuthenticated()">-->
+<!--    <h1> you are in !</h1>-->
+
+<!--    <form action="/addSubCategories" method="GET">-->
+<!--        <button type="submit">Add Sub-categories</button>-->
+<!--    </form>-->
+
+<!--    <form action="/myProfile" method="GET">-->
+<!--        <button type="submit">My Profile</button>-->
+<!--    </form>-->
+
+<!--    <form action="/allProviders" method="GET">-->
+<!--        <button type="submit">All providers</button>-->
+<!--    </form>-->
+
+<!--    <form action="/logout-process" method="GET">-->
+<!--        <button type="submit">Sign out</button>-->
+<!--    </form>-->
+</div>
+
+<script th:src="@{/js/jquery.slim.min.js}"></script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
